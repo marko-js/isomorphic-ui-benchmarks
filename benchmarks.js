@@ -10,13 +10,13 @@ var benchmarks = [];
 var enabledLibs = null;
 var enabledBenchmarks = null;
 
-// enabledLibs = {
-//     preact: true,
-//     react: true,
-//     marko: true,
-//     vue: true,
-//     inferno: true
-// };
+enabledLibs = {
+    preact: false,
+    react: false,
+    marko: true,
+    vue: false,
+    inferno: false
+};
 //
 // enabledBenchmarks = {
 //     'search-results': true,
