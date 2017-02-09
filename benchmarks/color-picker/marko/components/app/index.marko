@@ -1,0 +1,46 @@
+class {
+    constructor() {
+        this.state = {
+            selectedColorIndex: 0
+        };
+    }
+
+    onMount() {
+        window.onMount();
+    }
+
+    handleColorClick(colorIndex) {
+        this.state.selectedColorIndex = colorIndex;
+    }
+}
+
+$ var colors = input.colors;
+$ var selectedColorIndex = state.selectedColorIndex;
+$ var selectedColor = colors[selectedColorIndex];
+
+<div.colors>
+    <h1>Choose your favorite color:</h1>
+    <div.colors>
+        <ul if(colors.length)>
+            <for(i, color in colors)>
+                $ {
+                    var className = 'color';
+                    if (selectedColorIndex === i) {
+                        className += ' selected';
+                    }
+                }
+                <li class=className style="background-color:${color.hex}"
+                    on-click('handleColorClick', i)>
+                    ${color.name}
+                </li>
+            </for>
+        </ul>
+        <div else>
+            No colors!
+        </div>
+    </div>
+    <div>
+        You chose:
+        <div class="chosen-color">${selectedColor.name}</div>
+    </div>
+</div>

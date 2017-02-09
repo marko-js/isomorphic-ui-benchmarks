@@ -1,0 +1,42 @@
+import fs from 'fs';
+import path from 'path';
+
+$ var dependencies = [
+    require.resolve("./browser.json"),
+    "require-run: " + require.resolve('./client'),
+    "require-run: " + require.resolve('../benchmarks/' + out.global.benchmark.name + "/client.js")
+];
+
+<lasso-page dependencies=dependencies name=out.global.benchmark.name cache-key=out.global.benchmark.name />
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>${out.global.benchmark.name} | Marko Benchmark</title>
+        <lasso-head/>
+        <link href="/benchmarks/${out.global.benchmark.name}/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <h1>${out.global.benchmark.name} | Marko Benchmark</h1>
+
+        <app benchmark=out.global.benchmark/>
+
+        <!--
+        Inject the body <script> tags to include the required client-side code:
+        -->
+        <lasso-body/>
+        <init-widgets/>
+
+        <for(bundle in data.bundles)>
+            <script src=bundle></script>
+        </for>
+
+        <!--
+        If launched using the browser-refresh app launcher then a <script>
+        tag will be injected to enable instant page refreshes when any
+        file is modified. See:
+        https://www.npmjs.com/package/browser-refresh
+        -->
+        <browser-refresh/>
+    </body>
+</html>

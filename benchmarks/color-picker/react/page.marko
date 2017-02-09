@@ -1,0 +1,23 @@
+import serverRender from './util/serverRender';
+import App from './components/App';
+
+<include(input.pageLayout)>
+    <@body>
+        $ var renderedHTML=serverRender(App, input.colors);
+        <div id="mount">$!{renderedHTML}</div>
+        <!--
+        In order for behavior to be attached to the
+        React UI components rendered on the server, we must re-render the
+        SearchResults UI component _again_ on the client using the exact same
+        data that we used to render it on the server.
+        This means that we have to go through the expensive step of
+        serializing the data to JSON and add the data to the page (increases
+        the page weight). The re-rendering on the client happens in "./client.js"
+        and it uses the data assigned to the global variable produced
+        by the following inline script:
+        -->
+        <script>
+            window.colors=${JSON.stringify(input.colors)};
+        </script>
+    </@body>
+</include>

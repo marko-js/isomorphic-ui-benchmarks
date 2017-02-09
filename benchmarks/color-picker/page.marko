@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>${out.global.title} • Isomorphic UI Benchmarks</title>
+        <link href="/benchmarks/color-picker/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <h1>${out.global.title} • Isomorphic UI Benchmarks</h1>
+        <ol style="display: none;" id="results"/>
+
+        <include(input.body)/>
+        <script>
+            window.addBench = function() {};
+            window.onMount = function() {
+                var startTime = performance && performance.timing && performance.timing.requestStart
+                if (startTime) {
+                    var timeToInteractive = Date.now() - (performance.timing.requestStart);
+                    console.log('TIME TO INTERACTIVE: ' + timeToInteractive + 'ms');
+                }
+            }
+        </script>
+        <script src=out.global.jsBundle></script>
+    </body>
+</html>

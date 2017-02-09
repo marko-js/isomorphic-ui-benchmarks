@@ -1,0 +1,13 @@
+import serverRender from './util/serverRender'
+import App from './components/App';
+
+<include(input.pageLayout)>
+    <@body>
+        <div id="mount">
+            $ serverRender(App, input, out);
+        </div>
+        <script>
+            window.colors=${JSON.stringify(input.colors)};
+        </script>
+    </@body>
+</include>

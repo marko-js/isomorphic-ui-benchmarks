@@ -1,0 +1,33 @@
+class {
+    onInput(input) {
+        this.state = {
+            purchased: false
+        };
+    }
+
+    handleBuyButtonClick() {
+        this.state.purchased = true;
+    }
+}
+
+<div class=["search-results-item"] style={ backgroundColor: state.purchased ? '#f1c40f' : ''}>
+    <h2>${input.title}</h2>
+
+    <div class="lvpic pic img left">
+		<div class="lvpicinner full-width picW">
+            <a href="/buy/${input.id}" class="img imgWr2">
+			     <img src=input.image alt=input.title/>
+			</a>
+		</div>
+    </div>
+
+    <span.price>${input.price}</span>
+    <if(state.purchased)>
+        <div.purchased>Purchased!</div>
+    </if>
+    <else>
+        <button.buy-now type="button" onClick("handleBuyButtonClick")>
+            Buy now!
+        </button>
+    </else>
+</div>
