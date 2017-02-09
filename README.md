@@ -1,6 +1,8 @@
 isomorphic-ui-benchmarks
 ========================================
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/marko-js/isomorphic-ui-benchmarks.svg)](https://greenkeeper.io/)
+
 This repo includes multiple benchmarks for various UI libraries. Each benchmark is designed to measure rendering performance (on the server and in the browser) and the time that it takes to update the DOM (client-side only).
 
 # Additional details
