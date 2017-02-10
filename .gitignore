@@ -1,0 +1,6 @@
+*.marko.js
+/node_modules
+/build
+/.cache
+.DS_Store
+/static
