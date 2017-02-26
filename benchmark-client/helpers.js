@@ -4,15 +4,15 @@ var mountEls = {};
 
 function createMountEl(libName) {
     var key = libName;
-    var mountWidget = mountContainer.renderSync({
+    var mountedComponent = mountContainer.renderSync({
             libName: libName
         })
         .appendTo(document.getElementById('mount'))
-        .getWidget();
+        .getComponent();
 
-    mountEls[key] =  mountWidget.el;
+    mountEls[key] =  mountedComponent.el;
 
-    return mountWidget.getEl('output');
+    return mountedComponent.getEl('output');
 }
 
 function showSingleMountEl(libName) {

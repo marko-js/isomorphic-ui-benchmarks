@@ -1,15 +1,15 @@
 var app = require('./components/app');
-require('marko/widgets').initWidgets();
+require('marko/components').init();
 
 window.addBench('marko', function(el, getNextSearchResults) {
 
-    var widget = app.renderSync(getNextSearchResults())
+    var component = app.renderSync(getNextSearchResults())
         .appendTo(el)
-        .getWidget();
+        .getComponent();
 
     return function(done) {
-        widget.input = getNextSearchResults();
-        widget.update();
+        component.input = getNextSearchResults();
+        component.update();
         done();
     };
 });

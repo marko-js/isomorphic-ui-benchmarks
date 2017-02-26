@@ -1,17 +1,17 @@
 var app = require('./components/app');
-require('marko/widgets').initWidgets();
+require('marko/components').init();
 
 window.addBench('marko', function(el, colors) {
 
-    var widget = app.renderSync({ colors: colors })
+    var component = app.renderSync({ colors: colors })
         .appendTo(el)
-        .getWidget();
+        .getComponent();
 
     var selectedColorIndex = 0;
 
     return function(done) {
-        widget.state.selectedColorIndex = (++selectedColorIndex) % colors.length;
-        widget.update();
+        component.state.selectedColorIndex = (++selectedColorIndex) % colors.length;
+        component.update();
         done();
     };
 });
