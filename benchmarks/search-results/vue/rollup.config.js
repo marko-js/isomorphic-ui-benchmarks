@@ -13,14 +13,14 @@ export default {
         babelPlugin({
             exclude: 'node_modules/**'
         }),
-        browserifyPlugin(envify),
         nodeResolvePlugin({
-            jsnext: true,  // Default: false
+            jsnext: false,  // Default: false
             main: true,  // Default: true
             browser: true,  // Default: false
             preferBuiltins: false,
             extensions: [ '.js', '.jsx' ]
         }),
+        // browserifyPlugin(envify),
         commonjsPlugin({
             include: [ 'node_modules/**', '**/*.js', '**/*.jsx'],
             extensions: [ '.js', '.jsx' ]
