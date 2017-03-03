@@ -50,7 +50,7 @@
     "lasso": "^2.10.3",
     "lasso-marko": "^2.2.1",
     "lodash": "^4.16.4",
-    "marko": "^4.0.0-rc.23",
+    "marko": "^4.0.0",
     "markoify": "^2.2.1",
     "minprops": "^1.0.0",
     "mkdirp": "^0.5.1",
