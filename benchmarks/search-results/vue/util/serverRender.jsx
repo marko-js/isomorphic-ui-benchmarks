@@ -1,4 +1,4 @@
-const Vue = require('Vue');
+const Vue = require('vue');
 const renderToString = require('vue-server-renderer').createRenderer().renderToString;
 
 module.exports = function serverRender(App, searchResultsData, out) {
