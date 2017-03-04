@@ -13,9 +13,9 @@ module.exports = class extends Component {
 
         return (
             <div className="search-results">
-                <div noNormalize hasKeyedChildren>
+                <div>
                     {searchResultsData.items.map(function(item, i) {
-                        return <SearchResultsItem key={i} item={item} noNormalize/>
+                        return <SearchResultsItem key={i} item={item}/>
                     })}
                 </div>
                 <Footer/>

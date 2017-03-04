@@ -41,20 +41,20 @@ module.exports = class extends Component {
             className += ' selected';
         }
 
-        return (<li className={className} style={style} onClick={linkEvent({this, i}, handleColorClick)} noNormalize>
+        return (<li className={className} style={style} onClick={linkEvent({this, i}, handleColorClick)}>
                 {color.name}
             </li>)
     }
 
     renderColors(colors) {
         if (colors.length) {
-            return (<ul hasNonKeyedChildren noNormalize>{colors.map((color, i) => {
+            return (<ul>{colors.map((color, i) => {
                 return this.renderColor(color, i);
             })}</ul>);
         } else {
             return <div>No colors!</div>
         }
-    }    
+    }
 
     render() {
         var colors = this.props.colors;
