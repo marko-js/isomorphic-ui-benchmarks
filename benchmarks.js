@@ -10,20 +10,20 @@ var benchmarks = [];
 var enabledLibs = null;
 var enabledBenchmarks = null;
 
-// enabledLibs = {
-//     preact: false,
-//     react: false,
-//     marko: true,
-//     vue: false,
-//     inferno: false
-// };
-//
-// enabledBenchmarks = {
-//     'search-results': true,
-//     'color-picker': false
-// };
+enabledLibs = {
+    marko: true,
+    preact: true,
+    react: true,
+    vue: true,
+    inferno: true
+};
 
-fs.readdirSync(benchmarksDir).forEach((benchmarkName) => {
+enabledBenchmarks = {
+    'search-results': true,
+    'color-picker': true
+};
+
+Object.keys(enabledBenchmarks).forEach((benchmarkName) => {
     var benchmarkDir = path.join(benchmarksDir, benchmarkName);
 
     if (!fs.statSync(benchmarkDir).isDirectory()) {
@@ -45,11 +45,7 @@ fs.readdirSync(benchmarksDir).forEach((benchmarkName) => {
 
     benchmarks.push(benchmark);
 
-    fs.readdirSync(benchmarkDir).forEach((libName) => {
-        if (libName === 'util') {
-            return;
-        }
-
+    Object.keys(enabledLibs).forEach((libName) => {
         if (enabledLibs && !enabledLibs[libName]) {
             return;
         }
