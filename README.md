@@ -175,7 +175,7 @@ npm run build # Build client-side JS bundles
 ## Run server-side benchmarks
 
 ```bash
-npm run benchmarks
+npm run benchmark
 ```
 
 ## Run client-side benchmarks
