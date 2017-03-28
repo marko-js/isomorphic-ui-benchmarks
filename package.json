@@ -50,7 +50,7 @@
     "lasso": "^2.10.3",
     "lasso-marko": "^2.2.1",
     "lodash": "^4.16.4",
-    "marko": "^4.0.0",
+    "marko": "^4.2.0",
     "markoify": "^2.2.1",
     "minprops": "^1.0.0",
     "mkdirp": "^0.5.1",
@@ -65,11 +65,12 @@
     "rollup-plugin-commonjs": "^8.0.2",
     "rollup-plugin-marko": "0.0.2",
     "rollup-plugin-node-resolve": "^2.0.0",
+    "rollup-plugin-replace": "^1.1.1",
     "safe-access": "^0.1.0",
     "serve-static": "^1.8.1",
     "uglify": "^0.1.5",
-    "vue": "^2.1.10",
-    "vue-server-renderer": "^2.1.10",
-    "vueify": "^9.4.0"
+    "vue": "^2.2.6",
+    "vue-server-renderer": "^2.2.6",
+    "vueify": "^9.4.1"
   }
 }
