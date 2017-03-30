@@ -1,0 +1,25 @@
+.colors .color {
+    box-sizing: border-box;
+    border: 2px solid white;
+    cursor: pointer;
+}
+
+.colors .color.selected {
+    border: 2px solid black;
+}
+.colors ul {
+    margin: 0;
+    padding-left: 0;
+    list-style: none;
+}
+
+.colors li {
+    margin: 0;
+    display: inline-block;
+    width: 150px;
+    height: 3em;
+    text-align: center;
+    line-height: 3em;
+    vertical-align: middle;
+}
+
