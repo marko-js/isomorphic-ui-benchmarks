@@ -41,7 +41,7 @@ module.exports = class extends Component {
             className += ' selected';
         }
 
-        return (<li className={className} style={style} onClick={linkEvent({this, i}, handleColorClick)}>
+        return (<li className={className} style={style} onClick={linkEvent({component: this, colorIndex: i}, handleColorClick)}>
                 {color.name}
             </li>)
     }
