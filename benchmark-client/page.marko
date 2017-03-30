@@ -14,7 +14,7 @@ $ var dependencies = [
         <meta charset="UTF-8"/>
         <title>${out.global.benchmark.name} | Marko Benchmark</title>
         <lasso-head/>
-        <link href="/benchmarks/${out.global.benchmark.name}/style.css" rel="stylesheet">
+        <link href="${process.env.URL_PREFIX || ''}/static/styles/${out.global.benchmark.name}.css" rel="stylesheet">
     </head>
     <body>
         <h1>${out.global.benchmark.name} | Marko Benchmark</h1>
@@ -27,7 +27,7 @@ $ var dependencies = [
         <lasso-body/>
         <init-components/>
 
-        <for(bundle in data.bundles)>
+        <for(bundle in input.bundles)>
             <script src=bundle></script>
         </for>
 

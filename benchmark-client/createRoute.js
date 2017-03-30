@@ -8,7 +8,7 @@ function createRoute(benchmark, routeOptions) {
         // if (bench.name !== 'marko') {
         //     return;
         // }
-        bundles.push(`/build/${benchmark.name}/bundles${isProduction ? '.min' : ''}/${bench.name}.js`);
+        bundles.push(`${process.env.URL_PREFIX || ''}/bundles/${benchmark.name}/${bench.name}${isProduction ? '.min' : ''}.js`);
     });
 
     return function(req, res) {

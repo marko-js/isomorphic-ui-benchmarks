@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8"/>
         <title>${out.global.title} • Isomorphic UI Benchmarks</title>
-        <link href="/benchmarks/color-picker/style.css" rel="stylesheet">
+        <link href="${process.env.URL_PREFIX || ''}/static/styles/color-picker.css" rel="stylesheet">
     </head>
     <body>
         <h1>${out.global.title} • Isomorphic UI Benchmarks</h1>

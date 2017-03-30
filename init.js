@@ -22,6 +22,7 @@ require('lasso').configure({
     bundlingEnabled: false,
     minify: false,//isProduction ? true : false,
     fingerprintsEnabled: false,
+    urlPrefix: (process.env.URL_PREFIX || '') + '/static',
     outputDir: path.join(__dirname, 'build/static')
 });
 

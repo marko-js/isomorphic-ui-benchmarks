@@ -9,13 +9,13 @@
             <li for(benchmark in data.benchmarks)>
                 <h1>${benchmark.name}</h1>
                 <p>
-                    <a href="/benchmark/${benchmark.name}">Run Client-side Benchmark</a>
+                    <a href="${process.env.URL_PREFIX || ''}/benchmark/${benchmark.name}/">Run Client-side Benchmark</a>
                 </p>
                 <p>
                     View pages:
                     <ul>
                         <li for(bench in benchmark.benches)>
-                            <a href="/${benchmark.name}/${bench.name}">${bench.name}</a>
+                            <a href="${process.env.URL_PREFIX || ''}/${benchmark.name}/${bench.name}/">${bench.name}</a>
                         </li>
                     </ul>
                 </p>

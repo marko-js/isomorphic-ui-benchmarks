@@ -3,6 +3,6 @@
 /build
 /.cache
 .DS_Store
-/static
 npm-debug.log
 .idea
+/__publish

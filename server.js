@@ -11,6 +11,8 @@ var indexTemplate = require('./index.marko');
 var isProduction = process.env.NODE_ENV === 'production';
 var minify = isProduction;
 
+var urlPrefix = process.env.URL_PREFIX || '';
+
 var app = express();
 app.use(compression());
 
@@ -19,7 +21,7 @@ benchmarks.forEach((benchmark) => {
 
     benchmark.benches.forEach((bench) => {
         var libName = bench.name;
-        var jsBundle = `/build/${benchmarkName}/bundles${minify ? '.min' : ''}/${libName}.js`;
+        var jsBundle = `${urlPrefix}/bundles/${benchmarkName}/${libName}${minify ? '.min' : ''}.js`;
 
         var routeOptions = {
             jsBundle: jsBundle
@@ -30,13 +32,15 @@ benchmarks.forEach((benchmark) => {
     });
 });
 
+app.use('/static', serveStatic(path.join(__dirname, 'static')));
+app.use('/isomorphic-ui-benchmarks/static', serveStatic(path.join(__dirname, 'static')));
+
 app.use(require('lasso/middleware').serveStatic());
 
 // app.get('/react', require('./src/react/pages/search-results'));
-app.use('/build', serveStatic(path.join(__dirname, 'build')));
-app.use('/static', serveStatic(path.join(__dirname, 'static')));
-app.use('/images', serveStatic(path.join(__dirname, 'images')));
-app.use('/benchmarks', serveStatic(path.join(__dirname, 'benchmarks')));
+app.use('/bundles', serveStatic(path.join(__dirname, 'build/bundles')));
+app.use('/isomorphic-ui-benchmarks/bundles', serveStatic(path.join(__dirname, 'build/bundles')));
+
 app.get('/', function(req, res) {
     res.marko(indexTemplate, {
         benchmarks
@@ -46,18 +50,26 @@ app.get('/', function(req, res) {
 
 var port = process.env.PORT ? parseInt(process.env.PORT, 10) : 8080;
 
-app.listen(port, function(err) {
-    if (err) {
-        throw err;
-    }
+module.exports = new Promise((resolve, reject) => {
+        app.listen(port, function(err) {
+            if (err) {
+                return reject(err);
+            }
 
-    console.log('Listening on port ' + port);
+            console.log('Listening on port ' + port);
 
-    if (process.send) {
-        console.log('Server online');
-        process.send('online'); // Let browser-refresh know we are ready to serve traffic
-    }
-});
+            if (process.send) {
+                console.log('Server online');
+                process.send('online'); // Let browser-refresh know we are ready to serve traffic
+            }
+
+            resolve(port);
+        });
+    })
+    .catch((err) => {
+        console.error('Failed to start server:', err);
+        process.exit(1);
+    });
 
 process.on('SIGTERM', function() {
     process.exit(0);

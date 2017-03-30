@@ -15,7 +15,7 @@ benchmarks.forEach((benchmark) => {
             return;
         }
 
-        process.env.BUNDLES_DIR = path.join(__dirname, `../build/${benchmarkName}/bundles/`);
+        process.env.BUNDLES_DIR = path.join(__dirname, `../build/bundles/${benchmarkName}`);
         execSync(`rollup -c ${bench.dir}/rollup.config.js`);
     });
 });
