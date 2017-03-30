@@ -70,7 +70,7 @@ module.exports = function() {
                           Affiliates
                         </a>
                       </li>
-                      <li className="gf-li" style={{paddingTop: 8}}>
+                      <li className="gf-li" style="padding-top: 8px">
                         <h3 className="gf-bttl">Tools &amp; apps</h3>
                       </li>
                       <li className="gf-li">
@@ -122,7 +122,7 @@ module.exports = function() {
                           See all companies
                         </a>
                       </li>
-                      <li className="gf-li" style={{paddingTop: 8}}>
+                      <li className="gf-li" style="padding-top: 8px">
                         <h3 className="gf-bttl">Stay connected</h3>
                       </li>
                       <li className="gf-li">
@@ -221,7 +221,7 @@ module.exports = function() {
                           Contact us
                         </a>
                       </li>
-                      <li className="gf-li" style={{paddingTop: 8}}>
+                      <li className="gf-li" style="padding-top: 8px">
                         <h3 className="gf-bttl">
                           <a href="http://community.ebay.com" _sp="m571.l2912" className="gf-bttl thrd">
                             Community
@@ -259,7 +259,7 @@ module.exports = function() {
                           eBay top shared
                         </a>
                       </li>
-                      <li className="gf-li" style={{paddingTop: 8}}>
+                      <li className="gf-li" style="padding-top: 8px">
                         <h3 className="gf-bttl">eBay Sites</h3>
                       </li>
                       <li className="gf-li">
