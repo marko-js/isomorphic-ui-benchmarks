@@ -24,12 +24,6 @@ module.exports = class extends Component {
         window.onMount();
     }
 
-    componentDidUpdate() {
-        if (this.props.onUpdate) {
-            this.props.onUpdate(this);
-        }
-    }
-
     renderColor(color, i) {
         var selectedColorIndex = this.state.selectedColorIndex;
         var style = {
