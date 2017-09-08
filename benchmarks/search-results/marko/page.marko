@@ -1,5 +1,8 @@
 <include(input.pageLayout)>
     <@body>
         <app(input.searchResults)/>
+        <script>
+            window.searchResultsData=${JSON.stringify(input.searchResults)};
+        </script>
     </@body>
 </include>

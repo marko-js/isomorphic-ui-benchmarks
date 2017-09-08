@@ -22,7 +22,7 @@ export default {
             extensions: [ '.js', '.marko' ]
         }),
         commonjsPlugin({
-            include: [ 'node_modules/**', '**/*.marko', '**/*.js'],
+            include: [],
             extensions: [ '.js', '.marko' ]
         })
     ],

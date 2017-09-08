@@ -2,18 +2,17 @@ import commonjsPlugin from 'rollup-plugin-commonjs';
 import browserifyPlugin from 'rollup-plugin-browserify-transform';
 import nodeResolvePlugin from 'rollup-plugin-node-resolve';
 import markoify from 'markoify';
-import envify from 'envify';
-import minpropsify from 'minprops/browserify';
 import path from 'path';
 
 export default {
-    entry: path.join(__dirname, 'client.js'),
-    format: 'iife',
-    moduleName: 'app',
+    input: path.join(__dirname, 'client.js'),
+    output: {
+      format: 'iife',
+      file: path.join(process.env.BUNDLES_DIR, 'marko.js')
+    },
+    name: 'app',
     plugins: [
         browserifyPlugin(markoify),
-        browserifyPlugin(envify),
-        browserifyPlugin(minpropsify),
         nodeResolvePlugin({
             jsnext: true,  // Default: false
             main: true,  // Default: true
@@ -22,9 +21,8 @@ export default {
             extensions: [ '.js', '.marko' ]
         }),
         commonjsPlugin({
-            include: [ 'node_modules/**', '**/*.marko', '**/*.js'],
+            include: [],
             extensions: [ '.js', '.marko' ]
         })
-    ],
-    dest: path.join(process.env.BUNDLES_DIR, 'marko.js')
+    ]
 };

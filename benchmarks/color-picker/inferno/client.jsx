@@ -24,7 +24,7 @@ window.addBench('inferno', function(el, colors) {
 
     function onUpdate() {
         if (currentDone) {
-            currentDone();            
+            currentDone();
         }
     }
 
@@ -34,11 +34,10 @@ window.addBench('inferno', function(el, colors) {
 
 
     return function(done) {
+      currentDone = done;
+
         widget.setState({
                 selectedColorIndex: (++selectedColorIndex) % colors.length
             });
-
-        currentDone = done;
-
     };
 });
