@@ -29,38 +29,33 @@ Environment:
 ## Server-side
 
 ```
-~/marko-js/isomorphic-ui-benchmarks (master)> npm run benchmark
-
-> isomorphic-ui-benchmarks@1.0.0 benchmark /Users/psteeleidem/development/github/marko-js/isomorphic-ui-benchmarks
-> node --expose-gc benchmark-server/run.js
-
 Warming up...
 
 Warmup complete.
 
-Running "color-picker"...
-
-Running benchmark "inferno"...
-
-inferno x 2,132 ops/sec ±0.68% (88 runs sampled)
+Running "search-results"...
 
 Running benchmark "marko"...
 
-marko x 5,519 ops/sec ±6.05% (56 runs sampled)
+marko x 5,783 ops/sec ±1.02% (76 runs sampled)
 
 Running benchmark "preact"...
 
-preact x 2,833 ops/sec ±4.07% (79 runs sampled)
+preact x 881 ops/sec ±1.69% (90 runs sampled)
 
 Running benchmark "react"...
 
-react x 262 ops/sec ±2.26% (75 runs sampled)
+react x 40.54 ops/sec ±3.26% (52 runs sampled)
 
 Running benchmark "vue"...
 
-vue x 1,514 ops/sec ±3.65% (75 runs sampled)
+vue x 1,331 ops/sec ±2.71% (76 runs sampled)
 
-vFastest is marko
+Running benchmark "inferno"...
+
+inferno x 695 ops/sec ±1.02% (87 runs sampled)
+
+Fastest is marko
 
 --------------
 
@@ -69,27 +64,27 @@ Warming up...
 
 Warmup complete.
 
-Running "search-results"...
-
-Running benchmark "inferno"...
-
-inferno x 383 ops/sec ±2.78% (78 runs sampled)
+Running "color-picker"...
 
 Running benchmark "marko"...
 
-marko x 4,854 ops/sec ±3.03% (83 runs sampled)
+marko x 10,997 ops/sec ±0.79% (86 runs sampled)
 
 Running benchmark "preact"...
 
-preact x 371 ops/sec ±2.58% (81 runs sampled)
+preact x 5,208 ops/sec ±1.24% (89 runs sampled)
 
 Running benchmark "react"...
 
-react x 42.10 ops/sec ±2.49% (53 runs sampled)
+react x 217 ops/sec ±3.31% (74 runs sampled)
 
 Running benchmark "vue"...
 
-vue x 185 ops/sec ±4.13% (70 runs sampled)
+vue x 3,384 ops/sec ±2.22% (73 runs sampled)
+
+Running benchmark "inferno"...
+
+inferno x 4,078 ops/sec ±0.75% (90 runs sampled)
 
 Fastest is marko
 
@@ -98,8 +93,8 @@ Fastest is marko
 
 DONE!
 
-~/marko-js/isomorphic-ui-benchmarks (master)> node -v
-v7.5.0
+~/marko-js/isomorphic-ui-benchmarks (master)>  node -v
+v8.4.0
 ```
 
 # Client-side
