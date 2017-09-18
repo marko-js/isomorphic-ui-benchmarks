@@ -19,11 +19,11 @@ Below are the results of a run on March 3, 2017
 
 Environment:
 
-- Node.js v7.5.0
+- Node.js v8.4.0
 - MacBook Pro (15-inch, 2016)
 - Processor: 2.9 GHz Intel Core i7
 - Memory: 16 GB 2133 MHz LPDDR3
-- macOS Sierra: 10.12.3 (16D32)
+- macOS Sierra: 10.12.6 (16G29)
 - Google Chrome Version 56.0.2924.87 (64-bit)
 
 ## Server-side
