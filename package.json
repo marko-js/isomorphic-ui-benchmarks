@@ -6,7 +6,7 @@
   "scripts": {
     "test": "npm run benchmark",
     "start": "node server.js",
-    "benchmark": "node --expose-gc benchmark-server/run.js",
+    "benchmark": "npm run bundle-vue-server && node --expose-gc benchmark-server/run.js",
     "build": "npm run bundle --silent && npm run minify --silent",
     "bundle": "node ./scripts/bundle.js",
     "static": "node ./scripts/static.js",
@@ -19,7 +19,8 @@
     "bundle-marko": "node ./scripts/bundle.js marko",
     "bundle-react": "node ./scripts/bundle.js react",
     "bundle-preact": "node ./scripts/bundle.js preact",
-    "bundle-vue": "node ./scripts/bundle.js vue"
+    "bundle-vue": "node ./scripts/bundle.js vue",
+    "bundle-vue-server": "webpack --config benchmarks/color-picker/vue/webpack.config.js && webpack --config benchmarks/search-results/vue/webpack.config.js"
   },
   "author": "Patrick Steele-Idem <pnidem@gmail.com",
   "license": "MIT",
@@ -71,8 +72,10 @@
     "safe-access": "^0.1.0",
     "serve-static": "^1.8.1",
     "uglify": "^0.1.5",
-    "vue": "^2.4.2",
-    "vue-server-renderer": "^2.2.6",
-    "vueify": "^9.4.1"
+    "vue": "^2.4.4",
+    "vue-loader": "^13.0.4",
+    "vue-server-renderer": "^2.4.4",
+    "vue-template-compiler": "^2.4.4",
+    "webpack": "^3.6.0"
   }
 }
