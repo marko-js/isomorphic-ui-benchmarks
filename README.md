@@ -19,48 +19,43 @@ Below are the results of a run on March 3, 2017
 
 Environment:
 
-- Node.js v7.5.0
+- Node.js v8.4.0
 - MacBook Pro (15-inch, 2016)
 - Processor: 2.9 GHz Intel Core i7
 - Memory: 16 GB 2133 MHz LPDDR3
-- macOS Sierra: 10.12.3 (16D32)
-- Google Chrome Version 56.0.2924.87 (64-bit)
+- macOS Sierra: 10.12.6 (16G29)
+- Google Chrome Version 61.0.3163.91 (Official Build) (64-bit)
 
 ## Server-side
 
 ```
-~/marko-js/isomorphic-ui-benchmarks (master)> npm run benchmark
-
-> isomorphic-ui-benchmarks@1.0.0 benchmark /Users/psteeleidem/development/github/marko-js/isomorphic-ui-benchmarks
-> node --expose-gc benchmark-server/run.js
-
 Warming up...
 
 Warmup complete.
 
-Running "color-picker"...
-
-Running benchmark "inferno"...
-
-inferno x 2,132 ops/sec ±0.68% (88 runs sampled)
+Running "search-results"...
 
 Running benchmark "marko"...
 
-marko x 5,519 ops/sec ±6.05% (56 runs sampled)
+marko x 5,783 ops/sec ±1.02% (76 runs sampled)
 
 Running benchmark "preact"...
 
-preact x 2,833 ops/sec ±4.07% (79 runs sampled)
+preact x 881 ops/sec ±1.69% (90 runs sampled)
 
 Running benchmark "react"...
 
-react x 262 ops/sec ±2.26% (75 runs sampled)
+react x 40.54 ops/sec ±3.26% (52 runs sampled)
 
 Running benchmark "vue"...
 
-vue x 1,514 ops/sec ±3.65% (75 runs sampled)
+vue x 1,331 ops/sec ±2.71% (76 runs sampled)
 
-vFastest is marko
+Running benchmark "inferno"...
+
+inferno x 695 ops/sec ±1.02% (87 runs sampled)
+
+Fastest is marko
 
 --------------
 
@@ -69,27 +64,27 @@ Warming up...
 
 Warmup complete.
 
-Running "search-results"...
-
-Running benchmark "inferno"...
-
-inferno x 383 ops/sec ±2.78% (78 runs sampled)
+Running "color-picker"...
 
 Running benchmark "marko"...
 
-marko x 4,854 ops/sec ±3.03% (83 runs sampled)
+marko x 10,997 ops/sec ±0.79% (86 runs sampled)
 
 Running benchmark "preact"...
 
-preact x 371 ops/sec ±2.58% (81 runs sampled)
+preact x 5,208 ops/sec ±1.24% (89 runs sampled)
 
 Running benchmark "react"...
 
-react x 42.10 ops/sec ±2.49% (53 runs sampled)
+react x 217 ops/sec ±3.31% (74 runs sampled)
 
 Running benchmark "vue"...
 
-vue x 185 ops/sec ±4.13% (70 runs sampled)
+vue x 3,384 ops/sec ±2.22% (73 runs sampled)
+
+Running benchmark "inferno"...
+
+inferno x 4,078 ops/sec ±0.75% (90 runs sampled)
 
 Fastest is marko
 
@@ -98,8 +93,8 @@ Fastest is marko
 
 DONE!
 
-~/marko-js/isomorphic-ui-benchmarks (master)> node -v
-v7.5.0
+~/marko-js/isomorphic-ui-benchmarks (master)>  node -v
+v8.4.0
 ```
 
 # Client-side
@@ -112,15 +107,17 @@ v7.5.0
 Warming up...
 Warmup complete.
 Running "search-results"...
-Running benchmark "inferno"...
-inferno x 229 ops/sec ±1.12% (56 runs sampled)
 Running benchmark "marko"...
-marko x 296 ops/sec ±1.14% (59 runs sampled)
+marko x 355 ops/sec ±1.28% (56 runs sampled)
 Running benchmark "preact"...
-preact x 256 ops/sec ±0.69% (60 runs sampled)
+preact x 267 ops/sec ±1.66% (57 runs sampled)
 Running benchmark "react"...
-react x 214 ops/sec ±0.58% (58 runs sampled)
-Fastest is marko
+react x 233 ops/sec ±1.76% (54 runs sampled)
+Running benchmark "vue"...
+vue x 197 ops/sec ±3.40% (55 runs sampled)
+Running benchmark "inferno"...
+inferno x 355 ops/sec ±1.24% (57 runs sampled)
+Fastest is marko,inferno
 ```
 
 ## Color picker
@@ -131,16 +128,19 @@ Fastest is marko
 Warming up...
 Warmup complete.
 Running "color-picker"...
-Running benchmark "inferno"...
-inferno x 3,085 ops/sec ±0.93% (20 runs sampled)
 Running benchmark "marko"...
-marko x 4,043 ops/sec ±3.37% (49 runs sampled)
+marko x 7,661 ops/sec ±1.03% (59 runs sampled)
 Running benchmark "preact"...
-preact x 3,123 ops/sec ±0.33% (63 runs sampled)
+preact x 3,914 ops/sec ±1.16% (24 runs sampled)
 Running benchmark "react"...
-react x 2,394 ops/sec ±0.79% (61 runs sampled)
-Fastest is marko
+react x 3,076 ops/sec ±2.21% (20 runs sampled)
+Running benchmark "vue"...
+vue x 5,003 ops/sec ±3.07% (30 runs sampled)
+Running benchmark "inferno"...
+inferno x 8,880 ops/sec ±0.99% (60 runs sampled)
+Fastest is inferno
 ```
+
 # Additional details
 
 ## Included libraries

@@ -39,8 +39,14 @@ Object.keys(enabledBenchmarks).forEach((benchmarkName) => {
         name: benchmarkName,
         dir: benchmarkDir,
         benches: [],
-        createRoute: require(path.join(benchmarkDir, 'createRoute')),
-        serverFactory: require(path.join(benchmarkDir, 'server'))
+        createRoute: function() {
+          var createRoute = require(path.join(benchmarkDir, 'createRoute'));
+          return createRoute.apply(this, arguments);
+        },
+        serverFactory: function() {
+          var serverFactory = require(path.join(benchmarkDir, 'server'));
+          return serverFactory.apply(this, arguments);
+        }
     };
 
     benchmarks.push(benchmark);
@@ -59,8 +65,10 @@ Object.keys(enabledBenchmarks).forEach((benchmarkName) => {
             dir: libDir,
             name: libName,
             url: `/${benchmarkName}/${libName}`,
-            serverFactory: require(path.join(libDir, 'server'))
-
+            serverFactory: function() {
+              var serverFactory = require(path.join(libDir, 'server'));
+              return serverFactory.apply(this, arguments);
+            }
         };
 
         benchmark.benches.push(bench);
