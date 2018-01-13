@@ -4,18 +4,16 @@ var path = require('path');
 var benchmarksDir = path.join(__dirname, 'benchmarks');
 
 var benchmarks = [];
-
-
-
 var enabledLibs = null;
 var enabledBenchmarks = null;
 
 enabledLibs = {
-    marko: true,
+    // marko: true, TODO: Somebody with knowledge of marko, please fix this
     preact: true,
     react: true,
     vue: true,
-    inferno: true
+    inferno: true,
+    infernoOptimized: true
 };
 
 enabledBenchmarks = {

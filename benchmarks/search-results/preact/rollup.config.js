@@ -11,25 +11,30 @@ process.env.NODE_ENV = 'production';
 
 
 export default {
-    entry: path.join(__dirname, 'client.jsx'),
+  input: path.join(__dirname, 'client.jsx'),
+  output: {
+    name: 'preact',
     format: 'iife',
-    moduleName: 'app',
-    plugins: [
-        babelPlugin({
-            // include: ['node_modules/**', '**/*.js', '**/*.jsx']
-        }),
-        browserifyPlugin(envify),
-        nodeResolvePlugin({
-            jsnext: false,  // Default: false
-            main: true,  // Default: true
-            browser: true,  // Default: false
-            preferBuiltins: false,
-            extensions: [ '.js', '.jsx' ]
-        }),
-        commonjsPlugin({
-            include: [ 'node_modules/**', '**/*.js', '**/*.jsx'],
-            extensions: [ '.js', '.jsx' ]
-        })
-    ],
-    dest: path.join(process.env.BUNDLES_DIR, 'preact.js')
+    file: path.join(process.env.BUNDLES_DIR, 'preact.js'),
+    sourcemap: false
+  },
+
+  plugins: [
+    babelPlugin({
+      // include: ['node_modules/**', '**/*.js', '**/*.jsx']
+    }),
+    browserifyPlugin(envify),
+    nodeResolvePlugin({
+      jsnext: false,  // Default: false
+      main: true,  // Default: true
+      browser: true,  // Default: false
+      preferBuiltins: false,
+      extensions: ['.js', '.jsx']
+    }),
+    commonjsPlugin({
+      sourceMap: false,
+      include: ['node_modules/**', '**/*.js', '**/*.jsx'],
+      extensions: ['.js', '.jsx']
+    })
+  ]
 };

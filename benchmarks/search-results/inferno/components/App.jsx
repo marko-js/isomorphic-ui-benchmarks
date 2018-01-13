@@ -1,9 +1,8 @@
 var Inferno = require('inferno');
-var Component = require('inferno-component');
 var SearchResultsItem = require('./SearchResultsItem');
 var Footer = require('./Footer');
 
-module.exports = class extends Component {
+module.exports = class extends Inferno.Component {
     componentDidMount() {
         window.onMount();
     }

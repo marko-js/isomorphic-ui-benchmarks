@@ -8,9 +8,10 @@ export default {
     input: path.join(__dirname, 'client.js'),
     output: {
       format: 'iife',
-      file: path.join(process.env.BUNDLES_DIR, 'marko.js')
+      file: path.join(process.env.BUNDLES_DIR, 'marko.js'),
+      sourcemap: false,
+      name: 'marko'
     },
-    name: 'app',
     plugins: [
         browserifyPlugin(markoify),
         nodeResolvePlugin({
@@ -21,8 +22,9 @@ export default {
             extensions: [ '.js', '.marko' ]
         }),
         commonjsPlugin({
-            include: [],
-            extensions: [ '.js', '.marko' ]
+          sourceMap: false,
+          include: [],
+          extensions: [ '.js', '.marko' ]
         })
     ]
 };

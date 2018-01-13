@@ -1,14 +1,13 @@
 var Inferno = require('inferno');
-var Component = require('inferno-component');
 var linkEvent = Inferno.linkEvent;
 
 function handleColorClick({component, colorIndex}) {
-    component.setStateSync({
+    component.setState({
         selectedColorIndex: colorIndex
     });
 }
 
-module.exports = class extends Component {
+module.exports = class extends Inferno.Component {
     constructor(props) {
         super(props);
         this.state = {

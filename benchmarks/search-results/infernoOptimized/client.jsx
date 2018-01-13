@@ -11,7 +11,7 @@ if (mountNode) {
     console.log('Re-rendering on client completed');
 }
 
-window.addBench('inferno', function(el, getNextSearchResults) {
+window.addBench('infernoOptimized', function(el, getNextSearchResults) {
     Inferno.render(
         <App searchResultsData={getNextSearchResults()} />,
         el);

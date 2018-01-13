@@ -7,9 +7,13 @@ import minpropsify from 'minprops/browserify';
 import path from 'path';
 
 export default {
-    entry: path.join(__dirname, 'client.js'),
-    format: 'iife',
-    moduleName: 'app',
+    input: path.join(__dirname, 'client.js'),
+    output: {
+        format: 'iife',
+        file: path.join(process.env.BUNDLES_DIR, 'marko.js'),
+        sourcemap: false,
+        name: 'marko'
+    },
     plugins: [
         browserifyPlugin(markoify),
         browserifyPlugin(envify),
@@ -22,9 +26,9 @@ export default {
             extensions: [ '.js', '.marko' ]
         }),
         commonjsPlugin({
+            sourceMap: false,
             include: [],
             extensions: [ '.js', '.marko' ]
         })
-    ],
-    dest: path.join(process.env.BUNDLES_DIR, 'marko.js')
+    ]
 };

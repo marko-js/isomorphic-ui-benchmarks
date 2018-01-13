@@ -1,0 +1,1 @@
+This is example how to use Inferno's JSX flags to optimize your code at application level.

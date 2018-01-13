@@ -9,9 +9,9 @@ const alias = require('rollup-plugin-alias');
 export default {
   input: path.join(__dirname, 'client.jsx'),
   output: {
-    name: 'Inferno',
+    name: 'infernoOptimized',
     format: 'iife',
-    file: path.join(process.env.BUNDLES_DIR, 'inferno.js'),
+    file: path.join(process.env.BUNDLES_DIR, 'infernoOptimized.js'),
     sourcemap: false
   },
   plugins: [

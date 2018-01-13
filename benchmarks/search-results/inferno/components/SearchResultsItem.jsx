@@ -1,5 +1,5 @@
 var Inferno = require('inferno');
-var Component = require('inferno-component');
+var Component = Inferno.Component;
 var linkEvent = Inferno.linkEvent;
 
 function handleBuyButtonClick(instance, event) {
