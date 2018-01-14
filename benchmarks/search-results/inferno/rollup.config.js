@@ -19,11 +19,12 @@ export default {
       keymirror: path.resolve(__dirname, 'src/js/utils/keymirror.js')
     }),
     nodeResolvePlugin({
-      jsnext: true,  // Default: false
-      main: true,  // Default: true
-      browser: false,  // Default: false
       preferBuiltins: false,
       extensions: ['.js', '.jsx']
+    }),
+    replace({
+      'process.env.NODE_ENV': JSON.stringify('production'),
+      sourcemap: false
     }),
     babelPlugin({
       exclude: 'node_modules/**',
@@ -49,10 +50,6 @@ export default {
     commonjsPlugin({
       sourceMap: false,
       extensions: ['.js', '.jsx']
-    }),
-    replace({
-      'process.env.NODE_ENV': JSON.stringify('production'),
-      sourcemap: false
     })
   ]
 }
