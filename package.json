@@ -19,6 +19,7 @@
     "bundle-marko": "node ./scripts/rollup.js marko",
     "bundle-react": "node ./scripts/rollup.js react",
     "bundle-preact": "node ./scripts/rollup.js preact",
+    "bundle-hyperapp": "node ./scripts/rollup.js hyperapp",
     "bundle-vue": "npm run bundle-vue-server && node ./scripts/rollup.js vue",
     "bundle-vue-server": "webpack --config benchmarks/color-picker/vue/webpack.config.js && webpack --config benchmarks/search-results/vue/webpack.config.js"
   },
@@ -47,6 +48,8 @@
     "express": "^4.11.2",
     "format-number": "^3.0.0",
     "google-closure-compiler-js": "^20170910.0.0",
+    "hyperapp": "^1.1.2",
+    "hyperapp-render": "^1.1.0",
     "inferno": "^3.9.0",
     "inferno-component": "^3.9.0",
     "inferno-server": "^3.9.0",
