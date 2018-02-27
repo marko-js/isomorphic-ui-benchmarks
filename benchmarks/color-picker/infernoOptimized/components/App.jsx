@@ -36,7 +36,7 @@ module.exports = class extends Inferno.Component {
 
     return (
       <li
-        $NoNormalize
+        $HasVNodeChildren
         className={className}
         style={style}
         onClick={linkEvent({ component: this, colorIndex: i }, handleColorClick)}>
@@ -64,9 +64,7 @@ module.exports = class extends Inferno.Component {
        * We dont need to define children types for <div>No colors!</div> because it has static children
        */
       return (
-        <ul
-          $HasNonKeyedChildren
-          $NoNormalize>
+        <ul $HasNonKeyedChildren>
           {listItems}
         </ul>);
     } else {
@@ -81,20 +79,19 @@ module.exports = class extends Inferno.Component {
 
     /*
      * We can optimize here by telling that "colors" div will always have single node as children
-     * ($NoNormalize + not defining type)
      *
-     * "chodren color" element is optimized by using $NoNormalize and manually creating textVNode
+     * "chodren color" element is optimized by using $HasVNodeChildren and manually creating textVNode
      * that needs to be done when rendering text and ignoring Normalization process, see search-results bench for more info.
      */
     return (
       <div class="colors">
         <h1>Choose your favorite color:</h1>
-        <div class="colors" $NoNormalize>
+        <div class="colors" $HasVNodeChildren>
           {this.renderColors(colors)}
         </div>
         <div>
           You chose:
-          <div className="chosen-color" $NoNormalize>{createTextVNode(selectedColor.name)}</div>
+          <div className="chosen-color" $HasVNodeChildren>{createTextVNode(selectedColor.name)}</div>
         </div>
       </div>
     );

@@ -34,16 +34,14 @@ module.exports = class extends Component {
      * This is example how to get more performance
      *
      * When we are telling Inferno not to normalize, we need to manually create required textNodes
-     * $NoNormalize is not needed when there is no dynamic JSX children expression
      * - See <button> for example. It does not need any flags because children is static
      */
     return (
       <div
-        $NoNormalize
         $HasNonKeyedChildren
         className="search-results-item"
         style={style}>
-        <h2 $NoNormalize>{createTextVNode(item.title)}</h2>
+        <h2 $HasVNodeChildren>{createTextVNode(item.title)}</h2>
         <div className="lvpic pic img left">
           <div className="lvpicinner full-width picW">
             <a href={"/buy/" + item.id} className="img imgWr2">
@@ -51,7 +49,7 @@ module.exports = class extends Component {
             </a>
           </div>
         </div>
-        <span $NoNormalize className="price">{createTextVNode(item.price)}</span>
+        <span $HasVNodeChildren className="price">{createTextVNode(item.price)}</span>
         {this.state.purchased ? (
           <div className="purchased">Purchased!</div>
         ) : (

@@ -24,7 +24,7 @@ module.exports = class extends Inferno.Component {
          */
         return (
             <div className="search-results">
-                <div $NoNormalize $HasKeyedChildren>
+                <div $HasKeyedChildren>
                   {resultRows}
                 </div>
                 <Footer/>
