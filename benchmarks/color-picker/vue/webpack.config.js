@@ -10,9 +10,7 @@ module.exports = {
     libraryTarget: 'commonjs2'
   },
   module: {
-    rules: [
-      { test: /\.vue$/, use: 'vue-loader' }
-    ]
+    rules: [{ test: /\.vue$/, use: 'vue-loader' }]
   },
   plugins: [
     new webpack.DefinePlugin({

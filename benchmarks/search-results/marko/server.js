@@ -1,8 +1,8 @@
-var app = require('./components/app');
+const app = require('./components/app')
 
 module.exports = function(getNextSearchResults) {
-    return function benchFn() {
-        var html = app.renderToString(getNextSearchResults());
-        return html;
-    };
-};
+  return function benchFn() {
+    const html = app.renderToString(getNextSearchResults())
+    return html
+  }
+}

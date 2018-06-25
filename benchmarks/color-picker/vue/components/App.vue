@@ -22,27 +22,27 @@
 
 <script>
 export default {
-    props: ['colors', 'handleMount', 'handleUpdate'],
-    mounted() {
-        if (this.handleMount) {
-            this.handleMount(this);
-        }
-        window.onMount();
-    },
-    updated() {
-        if (this.handleUpdate) {
-            this.handleUpdate(this);
-        }
-    },
-    data: function() {
-        return {
-            selectedColorIndex: 0
-        }
-    },
-    methods: {
-        handleColorClick: function(colorIndex) {
-            this.selectedColorIndex = colorIndex;
-        }
+  props: ['colors', 'handleMount', 'handleUpdate'],
+  mounted() {
+    if (this.handleMount) {
+      this.handleMount(this)
     }
-};
+    window.onMount()
+  },
+  updated() {
+    if (this.handleUpdate) {
+      this.handleUpdate(this)
+    }
+  },
+  data: function() {
+    return {
+      selectedColorIndex: 0
+    }
+  },
+  methods: {
+    handleColorClick: function(colorIndex) {
+      this.selectedColorIndex = colorIndex
+    }
+  }
+}
 </script>
