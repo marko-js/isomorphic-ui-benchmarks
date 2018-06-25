@@ -23,14 +23,14 @@
 
 <script>
 export default {
-    props: ['item'],
-    data () {
-      return { purchased: false }
-    },
-    methods: {
-        handleBuyButtonClick: function(instance) {
-            this.purchased = true;
-        }
+  props: ['item'],
+  data() {
+    return { purchased: false }
+  },
+  methods: {
+    handleBuyButtonClick: function(instance) {
+      this.purchased = true
     }
+  }
 }
 </script>

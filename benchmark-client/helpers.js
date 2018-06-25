@@ -1,40 +1,41 @@
-var mountContainer = require('./components/mount-container');
+const mountContainer = require('./components/mount-container')
 
-var mountEls = {};
+const mountEls = {}
 
 function createMountEl(libName) {
-    var key = libName;
-    var mountedComponent = mountContainer.renderSync({
-            libName: libName
-        })
-        .appendTo(document.getElementById('mount'))
-        .getComponent();
+  const key = libName
+  const mountedComponent = mountContainer
+    .renderSync({
+      libName: libName
+    })
+    .appendTo(document.getElementById('mount'))
+    .getComponent()
 
-    mountEls[key] =  mountedComponent.el;
+  mountEls[key] = mountedComponent.el
 
-    return mountedComponent.getEl('output');
+  return mountedComponent.getEl('output')
 }
 
 function showSingleMountEl(libName) {
-    var key = libName;
+  const key = libName
 
-    for (var curKey in mountEls) {
-        var mountEl = mountEls[curKey];
-        if (curKey === key) {
-            mountEl.style.display = 'inline-block';
-        } else {
-            mountEl.style.display = 'none';
-        }
+  for (const curKey in mountEls) {
+    const mountEl = mountEls[curKey]
+    if (curKey === key) {
+      mountEl.style.display = 'inline-block'
+    } else {
+      mountEl.style.display = 'none'
     }
+  }
 }
 
 function showMountEl(libName) {
-    var key = libName;
+  const key = libName
 
-    var mountEl = mountEls[key];
-    mountEl.style.display = 'inline-block';
+  const mountEl = mountEls[key]
+  mountEl.style.display = 'inline-block'
 }
 
-exports.createMountEl = createMountEl;
-exports.showSingleMountEl = showSingleMountEl;
-exports.showMountEl = showMountEl;
+exports.createMountEl = createMountEl
+exports.showSingleMountEl = showSingleMountEl
+exports.showMountEl = showMountEl

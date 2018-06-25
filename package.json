@@ -10,8 +10,8 @@
     "build": "npm run bundle --silent && npm run minify --silent",
     "bundle": "node ./scripts/bundle.js",
     "static": "node ./scripts/static.js",
-    "publish": "node ./scripts/publish.js",
     "minify": "node ./scripts/minify.js",
+    "lint": "haru-service lint --fix",
     "________marko stuff": "",
     "build-marko": "npm run bundle-marko --silent && node ./scripts/minify.js marko",
     "bundle-marko": "node ./scripts/rollup.js marko",
@@ -71,5 +71,10 @@
     "vue-server-renderer": "^2.4.4",
     "vue-template-compiler": "^2.4.4",
     "webpack": "^3.6.0"
+  },
+  "devDependencies": {
+    "@hbc/haru-configs": "^0.1.0",
+    "@hbc/haru-cli-service": "^0.1.1",
+    "@hbc/haru-engine": "^0.1.2"
   }
 }
