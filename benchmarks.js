@@ -12,10 +12,8 @@ var enabledBenchmarks = null;
 
 enabledLibs = {
     marko: true,
-    preact: true,
     react: true,
     vue: true,
-    inferno: true
 };
 
 enabledBenchmarks = {
