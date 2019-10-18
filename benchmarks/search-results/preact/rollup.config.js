@@ -11,18 +11,14 @@ process.env.NODE_ENV = 'production';
 
 
 export default {
-    entry: path.join(__dirname, 'client.jsx'),
-    format: 'iife',
-    moduleName: 'app',
+    input: path.join(__dirname, 'client.jsx'),
     plugins: [
         babelPlugin({
             // include: ['node_modules/**', '**/*.js', '**/*.jsx']
         }),
         browserifyPlugin(envify),
         nodeResolvePlugin({
-            jsnext: false,  // Default: false
-            main: true,  // Default: true
-            browser: true,  // Default: false
+            mainFields: ["browser", "module", "jsnext", "main"],
             preferBuiltins: false,
             extensions: [ '.js', '.jsx' ]
         }),
@@ -31,5 +27,9 @@ export default {
             extensions: [ '.js', '.jsx' ]
         })
     ],
-    dest: path.join(process.env.BUNDLES_DIR, 'preact.js')
+    output: {
+        name: 'app',
+        format: 'iife',
+        file: path.join(process.env.BUNDLES_DIR, 'preact.js')
+    }
 };

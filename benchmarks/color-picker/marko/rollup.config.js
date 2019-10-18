@@ -5,24 +5,22 @@ import markoify from 'markoify';
 import path from 'path';
 
 export default {
-    input: path.join(__dirname, 'client.js'),
-    output: {
-      format: 'iife',
-      file: path.join(process.env.BUNDLES_DIR, 'marko.js')
-    },
+  input: path.join(__dirname, 'client.js'),
+  output: {
     name: 'app',
-    plugins: [
-        browserifyPlugin(markoify),
-        nodeResolvePlugin({
-            jsnext: true,  // Default: false
-            main: true,  // Default: true
-            browser: true,  // Default: false
-            preferBuiltins: false,
-            extensions: [ '.js', '.marko' ]
-        }),
-        commonjsPlugin({
-            include: [],
-            extensions: [ '.js', '.marko' ]
-        })
-    ]
+    format: 'iife',
+    file: path.join(process.env.BUNDLES_DIR, 'marko.js')
+  },
+  plugins: [
+    browserifyPlugin(markoify),
+    nodeResolvePlugin({
+      mainFields: ['browser', 'module', 'jsnext', 'main'],
+      preferBuiltins: false,
+      extensions: ['.js', '.marko']
+    }),
+    commonjsPlugin({
+      include: [],
+      extensions: ['.js', '.marko']
+    })
+  ]
 };

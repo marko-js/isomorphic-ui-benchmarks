@@ -6,18 +6,14 @@ import envify from 'envify';
 import path from 'path';
 
 export default {
-    entry: path.join(__dirname, 'client.jsx'),
-    format: 'iife',
-    moduleName: 'app',
+    input: path.join(__dirname, 'client.jsx'),
     plugins: [
         babelPlugin({
             exclude: 'node_modules/**'
         }),
         browserifyPlugin(envify),
         nodeResolvePlugin({
-            jsnext: true,  // Default: false
-            main: true,  // Default: true
-            browser: true,  // Default: false
+             mainFields: ["browser", "module", "jsnext", "main"],
             preferBuiltins: false,
             extensions: [ '.js', '.jsx' ]
         }),
@@ -26,5 +22,9 @@ export default {
             extensions: [ '.js', '.jsx' ]
         })
     ],
-    dest: path.join(process.env.BUNDLES_DIR, 'inferno.js')
+    output: {
+        name: 'app',
+        format: 'iife',
+        file: path.join(process.env.BUNDLES_DIR, 'inferno.js')
+    }
 };

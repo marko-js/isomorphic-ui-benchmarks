@@ -5,17 +5,13 @@ import path from 'path';
 import replace from 'rollup-plugin-replace';
 
 export default {
-    entry: path.join(__dirname, 'client.jsx'),
-    format: 'iife',
-    moduleName: 'app',
+    input: path.join(__dirname, 'client.jsx'),
     plugins: [
         babelPlugin({
             exclude: 'node_modules/**'
         }),
         nodeResolvePlugin({
-            jsnext: false,  // Default: false
-            main: true,  // Default: true
-            browser: true,  // Default: false
+            mainFields: ["browser", "module", "jsnext", "main"],
             preferBuiltins: false,
             extensions: [ '.js', '.jsx' ]
         }),
@@ -29,5 +25,9 @@ export default {
           'process.env.VUE_ENV': JSON.stringify('browser')
         })
     ],
-    dest: path.join(process.env.BUNDLES_DIR, 'vue.js')
+    output: {
+        name: 'app',
+        format: 'iife',
+        file: path.join(process.env.BUNDLES_DIR, 'vue.js')
+    }
 };
