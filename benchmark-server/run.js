@@ -1,12 +1,10 @@
-require('require-self-ref');
-
 require("babel-register")({
     // and .js so you'll have to add them back if you want them to be used again.
     extensions: [".jsx"]
 });
 
 var benchmarks = require('../benchmarks');
-var util_runBenchmark = require('~/util/runBenchmark');
+var util_runBenchmark = require('../util/runBenchmark');
 var Benchmark = require('benchmark');
 
 function runBenchmark(benchmark) {

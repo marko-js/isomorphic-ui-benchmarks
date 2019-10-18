@@ -1,4 +1,4 @@
-var runBenchmark = require('~/util/runBenchmark');
+var runBenchmark = require('../../../util/runBenchmark');
 var client = require('../../client');
 
 var Benchmark = typeof window !== 'undefined' && window.Benchmark;

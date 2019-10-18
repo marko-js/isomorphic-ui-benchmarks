@@ -4,8 +4,6 @@ if (!process.env.NODE_ENV) {
     process.env.NODE_ENV = 'production';
 }
 
-var isProduction = process.env.NODE_ENV === 'production';
-
 require('lasso').configure({
     plugins: [
         {
@@ -13,10 +11,6 @@ require('lasso').configure({
             config: {
                 output: 'vdom'
             }
-        },
-        {
-            plugin: 'minprops/lasso',
-            enabled: isProduction
         }
     ],
     bundlingEnabled: false,
@@ -26,7 +20,6 @@ require('lasso').configure({
     outputDir: path.join(__dirname, 'build/static')
 });
 
-require('require-self-ref');
 require('lasso/node-require-no-op').enable('.less', '.css');
 require('marko/express');
 require("babel-register")({
@@ -35,7 +28,6 @@ require("babel-register")({
 });
 
 require('marko/node-require').install();
-// require('lasso/node-require-no-op').enable('.less', '.css');
 
 require('marko/compiler').configure({
     assumeUpToDate: false
