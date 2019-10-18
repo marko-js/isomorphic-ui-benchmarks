@@ -25,6 +25,7 @@
   "author": "Patrick Steele-Idem <pnidem@gmail.com",
   "license": "MIT",
   "dependencies": {
+    "@marko/rollup": "^2.0.1",
     "async": "^2.5.0",
     "babel-helper-vue-jsx-merge-props": "^2.0.2",
     "babel-plugin-inferno": "^3.1.0",
@@ -63,7 +64,6 @@
     "require-self-ref": "^2.0.1",
     "rollup": "^1.25.0",
     "rollup-plugin-babel": "^3.0.7",
-    "rollup-plugin-browserify-transform": "^1.0.1",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-replace": "^2.2.0",

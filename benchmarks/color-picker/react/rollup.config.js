@@ -1,8 +1,7 @@
 import commonjsPlugin from 'rollup-plugin-commonjs';
-import browserifyPlugin from 'rollup-plugin-browserify-transform';
 import nodeResolvePlugin from 'rollup-plugin-node-resolve';
+import replace from "rollup-plugin-replace";
 import babelPlugin from 'rollup-plugin-babel';
-import envify from 'envify';
 import path from 'path';
 
 export default {
@@ -11,7 +10,7 @@ export default {
         babelPlugin({
             exclude: 'node_modules/**'
         }),
-        browserifyPlugin(envify),
+        replace({ 'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV) }),
         nodeResolvePlugin({
              mainFields: ["browser", "module", "jsnext", "main"],
             preferBuiltins: false,

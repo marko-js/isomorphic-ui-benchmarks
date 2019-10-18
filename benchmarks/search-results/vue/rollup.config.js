@@ -15,7 +15,6 @@ export default {
             preferBuiltins: false,
             extensions: [ '.js', '.jsx' ]
         }),
-        // browserifyPlugin(envify),
         commonjsPlugin({
             include: [ 'node_modules/**', '**/*.js', '**/*.jsx'],
             extensions: [ '.js', '.jsx' ]
