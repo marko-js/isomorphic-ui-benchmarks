@@ -1,4 +1,5 @@
 var Inferno = require('inferno');
+var createVNode = Inferno.createVNode;
 
 var App = require('./components/App');
 

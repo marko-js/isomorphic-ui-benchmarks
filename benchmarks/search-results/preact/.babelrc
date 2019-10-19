@@ -1,10 +1,3 @@
 {
-    "presets": [
-        ["es2015", { "loose": true, "modules": false }],
-        "stage-0"
-    ],
-    "plugins": [
-        [ "transform-react-jsx", { "pragma": "h" } ],
-        ["transform-es2015-block-scoping"]
-    ]
+  "presets": [["@babel/preset-react", { "pragma": "preact.h" }]]
 }

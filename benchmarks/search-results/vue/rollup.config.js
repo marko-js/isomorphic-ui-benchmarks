@@ -7,16 +7,13 @@ import replace from 'rollup-plugin-replace';
 export default {
     input: path.join(__dirname, 'client.jsx'),
     plugins: [
-        babelPlugin({
-            exclude: 'node_modules/**'
-        }),
+        babelPlugin({ runtimeHelpers: true }),
         nodeResolvePlugin({
             mainFields: ["browser", "module", "jsnext", "main"],
             preferBuiltins: false,
             extensions: [ '.js', '.jsx' ]
         }),
         commonjsPlugin({
-            include: [ 'node_modules/**', '**/*.js', '**/*.jsx'],
             extensions: [ '.js', '.jsx' ]
         }),
         replace({

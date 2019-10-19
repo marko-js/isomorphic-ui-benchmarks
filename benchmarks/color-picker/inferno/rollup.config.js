@@ -7,17 +7,14 @@ import path from 'path';
 export default {
     input: path.join(__dirname, 'client.jsx'),
     plugins: [
-        babelPlugin({
-            exclude: 'node_modules/**'
-        }),
+        babelPlugin({ runtimeHelpers: true }),
         replace({ 'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV) }),
         nodeResolvePlugin({
-             mainFields: ["browser", "module", "jsnext", "main"],
+            mainFields: ["browser", "module", "jsnext", "main"],
             preferBuiltins: false,
             extensions: [ '.js', '.jsx' ]
         }),
         commonjsPlugin({
-            include: [ 'node_modules/**', '**/*.js', '**/*.jsx'],
             extensions: [ '.js', '.jsx' ]
         })
     ],

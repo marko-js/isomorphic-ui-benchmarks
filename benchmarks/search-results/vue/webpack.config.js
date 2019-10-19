@@ -1,7 +1,9 @@
 const path = require('path')
 const webpack = require('webpack')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 module.exports = {
+  mode: 'production',
   entry: path.resolve(__dirname, 'components/App.vue'),
   target: 'node',
   output: {
@@ -19,6 +21,7 @@ module.exports = {
       'process.env': {
         NODE_ENV: '"production"'
       }
-    })
+    }),
+    new VueLoaderPlugin()
   ]
 }

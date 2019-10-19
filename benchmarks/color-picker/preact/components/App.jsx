@@ -1,9 +1,6 @@
-'use strict';
-var preact = require('preact');
-var h = preact.h;
-var Component = preact.Component;
+const preact = require('preact');
 
-module.exports = class extends Component {
+module.exports = class extends preact.Component {
     constructor(props) {
         super(props);
         this.state = {

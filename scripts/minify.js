@@ -5,7 +5,7 @@ require('../init');
 const fs = require('fs');
 const path = require('path');
 const zlib = require('zlib');
-const UglifyJS = require("uglify-js");
+const Terser = require("terser");
 const formatNumber = require('format-number')();
 
 function leftPad(str, padding) {
@@ -16,46 +16,26 @@ function leftPad(str, padding) {
     return str;
 }
 
-var minifiers = {
-    gcc: function minifyGCC(src, file) {
-        const gcc = require('google-closure-compiler-js');
-        const options = {
-            jsCode: [{src: src}],
-            languageIn: 'ES5'
-        };
+function minifier(src, file) {
+    try {
+        var result = Terser.minify(src);
 
-        const out = gcc.compile(options);
-
-        // if (out.errors && out.errors.length) {
-        //     console.error(out.errors);
-        //     throw new Error(`Minification failed for ${file}`);
-        // }
-        return out.compiledCode;
-    },
-    uglify: function minifyUglifyJS(src, file) {
-        try {
-            return UglifyJS.minify(src, {
-                fromString: true
-            }).code;
-        } catch(e) {
-            if (e.line != null) {
-                console.error(`Failed to minify ${file}`);
-                console.error(` Location: ${file}:${e.line}:${e.col}`);
-                console.error(` Message: ${e.message}`);
-                process.exit(1);
-            }
-            throw e;
+        if (result.error) {
+            throw result.error;
         }
 
-    },
-    both: function(src, file) {
-        var withGCC = minifiers.gcc(src, file);
-        var withBoth = minifiers.uglify(withGCC, file);
-        return withBoth.length < withGCC.length ? withBoth : withGCC;
+        return result.code;
+    } catch(e) {
+        if (e.line != null) {
+            console.error(`Failed to minify ${file}`);
+            console.error(` Location: ${file}:${e.line}:${e.col}`);
+            console.error(` Message: ${e.message}`);
+            process.exit(1);
+        }
+        throw e;
     }
-};
 
-var minifier = minifiers.both;
+}
 
 var targetLib = process.argv[2];
 

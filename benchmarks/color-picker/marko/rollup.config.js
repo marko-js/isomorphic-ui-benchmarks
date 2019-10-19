@@ -18,7 +18,6 @@ export default {
       extensions: ['.js', '.marko']
     }),
     commonjsPlugin({
-      include: [],
       extensions: ['.js', '.marko']
     })
   ]

@@ -1,8 +1,4 @@
 {
-    "presets": [
-        ["es2015", { "loose": true, "modules": false }],
-        "stage-0",
-        "react"
-    ],
-    "plugins": ["transform-react-constant-elements"]
+  "presets": ["@babel/preset-react"],
+  "plugins": ["babel-plugin-transform-react-constant-elements"]
 }

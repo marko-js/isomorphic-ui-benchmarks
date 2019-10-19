@@ -10,7 +10,7 @@ export default {
         marko(),
         replace({ 'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV) }),
         nodeResolvePlugin({
-             mainFields: ["browser", "module", "jsnext", "main"],
+            mainFields: ["browser", "module", "jsnext", "main"],
             preferBuiltins: false,
             extensions: [ '.js', '.marko' ]
         }),

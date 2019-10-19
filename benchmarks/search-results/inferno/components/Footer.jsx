@@ -1,4 +1,6 @@
 var Inferno = require('inferno');
+var createVNode = Inferno.createVNode;
+var createTextVNode = Inferno.createTextVNode;
 
 module.exports = function() {
   return (

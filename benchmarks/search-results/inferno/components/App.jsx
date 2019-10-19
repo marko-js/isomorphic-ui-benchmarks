@@ -1,5 +1,7 @@
 var Inferno = require('inferno');
-var Component = require('inferno-component');
+var Component = Inferno.Component;
+var createVNode = Inferno.createVNode;
+var createComponentVNode = Inferno.createComponentVNode;
 var SearchResultsItem = require('./SearchResultsItem');
 var Footer = require('./Footer');
 

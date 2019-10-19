@@ -9,9 +9,7 @@ process.env.NODE_ENV = 'production';
 export default {
     input: path.join(__dirname, 'client.jsx'),
     plugins: [
-        babelPlugin({
-            // include: ['node_modules/**', '**/*.js', '**/*.jsx']
-        }),
+        babelPlugin({ runtimeHelpers: true }),
         replace({ 'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV) }),
         nodeResolvePlugin({
             mainFields: ["browser", "module", "jsnext", "main"],
@@ -19,7 +17,6 @@ export default {
             extensions: [ '.js', '.jsx' ]
         }),
         commonjsPlugin({
-            include: [ 'node_modules/**', '**/*.js', '**/*.jsx'],
             extensions: [ '.js', '.jsx' ]
         })
     ],

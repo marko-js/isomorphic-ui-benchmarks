@@ -1,8 +1,6 @@
-var preact = require('preact');
-var h = preact.h;
-var renderToString = require('preact-render-to-string');
-
-var App = require('./components/App');
+const preact = require('preact');
+const renderToString = require('preact-render-to-string');
+const App = require('./components/App');
 
 module.exports = function(colors) {
     return function benchFn() {

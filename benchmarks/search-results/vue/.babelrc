@@ -1,7 +1,6 @@
 {
     "presets": [
-        ["es2015", { "loose": true, "modules": false }],
-        "stage-0"
-    ],
-    "plugins": ["transform-vue-jsx"]
+        ["@babel/preset-env", { "loose": true, "modules": false }],
+        "@vue/babel-preset-jsx"
+    ]
 }

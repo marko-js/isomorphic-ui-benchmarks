@@ -17,28 +17,28 @@ module.exports = {
                       <ul>
                         <li className="gf-li">
                           <h3 className="gf-bttl">
-                            <a href="http://www.ebay.com/sch/allcategories/all-categories" _sp="m571.l3601" className="gf-bttl thrd">Buy</a>
+                            <a href="http://www.ebay.com/sch/allcategories/all-categories" sp="m571.l3601" className="gf-bttl thrd">Buy</a>
                           </h3>
                         </li>
                         <li className="gf-li">
-                          <a href="http://pages.ebay.com/help/account/registration.html" _sp="m571.l2895" className="thrd">Registration</a>
+                          <a href="http://pages.ebay.com/help/account/registration.html" sp="m571.l2895" className="thrd">Registration</a>
                         </li>
                         <li className="gf-li">
-                          <a href="http://pages.ebay.com/ebay-money-back-guarantee/" _sp="m571.l4539" className="thrd">eBay Money Back Guarantee</a>
+                          <a href="http://pages.ebay.com/ebay-money-back-guarantee/" sp="m571.l4539" className="thrd">eBay Money Back Guarantee</a>
                         </li>
                         <li className="gf-li">
-                          <a href="http://pages.ebay.com/help/buy/basics.html" _sp="m571.l2897" className="thrd">Bidding &amp; buying help</a>
+                          <a href="http://pages.ebay.com/help/buy/basics.html" sp="m571.l2897" className="thrd">Bidding &amp; buying help</a>
                         </li>
                         <li className="gf-li">
-                          <a href="http://stores.ebay.com" _sp="m571.l2899" className="thrd">Stores</a>
+                          <a href="http://stores.ebay.com" sp="m571.l2899" className="thrd">Stores</a>
                         </li>
                         <li className="gf-li">
-                          <a href="http://www.ebay.com/local" _sp="m571.l3221" className="thrd">
+                          <a href="http://www.ebay.com/local" sp="m571.l3221" className="thrd">
                             eBay Local
                           </a>
                         </li>
                         <li className="gf-li">
-                          <a href="http://www.ebay.com/gds" _sp="m571.l5360" className="thrd">eBay guides</a>
+                          <a href="http://www.ebay.com/gds" sp="m571.l5360" className="thrd">eBay guides</a>
                         </li>
                       </ul>
                     </td>
@@ -46,28 +46,28 @@ module.exports = {
                       <ul>
                         <li className="gf-li">
                           <h3 className="gf-bttl">
-                            <a href="http://www.ebay.com/sl/sell" _sp="m571.l2903" className="gf-bttl thrd">
+                            <a href="http://www.ebay.com/sl/sell" sp="m571.l2903" className="gf-bttl thrd">
                               Sell
                             </a>
                           </h3>
                         </li>
                         <li className="gf-li">
-                          <a href="http://www.ebay.com/sl/sell" _sp="m571.l2904" className="thrd">
+                          <a href="http://www.ebay.com/sl/sell" sp="m571.l2904" className="thrd">
                             Start selling
                           </a>
                         </li>
                         <li className="gf-li">
-                          <a href="http://pages.ebay.com/sellerinformation/howtosell/sellingbasics.html" _sp="m571.l2905" className="thrd">
+                          <a href="http://pages.ebay.com/sellerinformation/howtosell/sellingbasics.html" sp="m571.l2905" className="thrd">
                             Learn to sell
                           </a>
                         </li>
                         <li className="gf-li">
-                          <a href="http://pages.ebay.com/sellerinformation/ebayforbusiness/essentials.html" _sp="m571.l2906" className="thrd">
+                          <a href="http://pages.ebay.com/sellerinformation/ebayforbusiness/essentials.html" sp="m571.l2906" className="thrd">
                             Business sellers
                           </a>
                         </li>
                         <li className="gf-li">
-                          <a href="https://www.ebaypartnernetwork.com/files/hub/en-US/index.html" _exsp="m571.l2921" className="thrd">
+                          <a href="https://www.ebaypartnernetwork.com/files/hub/en-US/index.html" exsp="m571.l2921" className="thrd">
                             Affiliates
                           </a>
                         </li>
@@ -75,28 +75,28 @@ module.exports = {
                           <h3 className="gf-bttl">Tools &amp; apps</h3>
                         </li>
                         <li className="gf-li">
-                          <a href="http://anywhere.ebay.com/mobile/" _sp="m571.l2944" className="thrd">
+                          <a href="http://anywhere.ebay.com/mobile/" sp="m571.l2944" className="thrd">
                             Mobile apps
                           </a>
                         </li>
                         <li className="gf-li">
-                          <a href="http://anywhere.ebay.com" _exsp="m571.l2923" className="thrd">
+                          <a href="http://anywhere.ebay.com" exsp="m571.l2923" className="thrd">
                             Downloads
                           </a>
                         </li>
                         <li className="gf-li">
-                          <a href="http://developer.ebay.com" _exsp="m571.l2924" className="thrd">
+                          <a href="http://developer.ebay.com" exsp="m571.l2924" className="thrd">
                             Developers
                           </a>
                         </li>
                         <li className="gf-li">
-                          <a href="http://pages.ebay.com/securitycenter/index.html" _sp="m571.l2907" className="thrd">Security center</a>
+                          <a href="http://pages.ebay.com/securitycenter/index.html" sp="m571.l2907" className="thrd">Security center</a>
                         </li>
                         <li className="gf-li">
-                          <a href="http://viv.ebay.com/ws/eBayISAPI.dll?EbayTime" _sp="m571.l2908" className="thrd">eBay official time</a>
+                          <a href="http://viv.ebay.com/ws/eBayISAPI.dll?EbayTime" sp="m571.l2908" className="thrd">eBay official time</a>
                         </li>
                         <li className="gf-li">
-                          <a href="http://pages.ebay.com/sitemap.html" _sp="m571.l2909" className="thrd">
+                          <a href="http://pages.ebay.com/sitemap.html" sp="m571.l2909" className="thrd">
                             Site map
                           </a>
                         </li>
@@ -108,18 +108,18 @@ module.exports = {
                           <h3 className="gf-bttl">eBay companies</h3>
                         </li>
                         <li className="gf-li">
-                          <a href="http://www.ebayclassifiedsgroup.com/" _exsp="m571.l2927" className="thrd">
+                          <a href="http://www.ebayclassifiedsgroup.com/" exsp="m571.l2927" className="thrd">
                             eBay Classifieds
                           </a>
                         </li>
                         <li className="gf-li">
-                          <a href="http://www.stubhub.com" _exsp="m571.l3208" className="thrd">StubHub</a>
+                          <a href="http://www.stubhub.com" exsp="m571.l3208" className="thrd">StubHub</a>
                         </li>
                         <li className="gf-li">
-                          <a href="https://www.close5.com" _exsp="m571.l3360" className="thrd">Close5</a>
+                          <a href="https://www.close5.com" exsp="m571.l3360" className="thrd">Close5</a>
                         </li>
                         <li className="gf-li">
-                          <a href="https://www.ebayinc.com/our-company/our-other-businesses/" _exsp="m571.l2931" className="thrd">
+                          <a href="https://www.ebayinc.com/our-company/our-other-businesses/" exsp="m571.l2931" className="thrd">
                             See all companies
                           </a>
                         </li>
@@ -127,22 +127,22 @@ module.exports = {
                           <h3 className="gf-bttl">Stay connected</h3>
                         </li>
                         <li className="gf-li">
-                          <a href="http://www.ebay.com/stories/" _sp="m571.l2940" className="thrd">
+                          <a href="http://www.ebay.com/stories/" sp="m571.l2940" className="thrd">
                             eBay's Blogs
                           </a>
                         </li>
                         <li className="gf-li">
-                          <a href="https://www.facebook.com/eBay" _exsp="m571.l2942" className="thrd gf-i">
+                          <a href="https://www.facebook.com/eBay" exsp="m571.l2942" className="thrd gf-i">
                             <i className="gspr icfbg">Facebook
                             </i></a><i className="gspr icfbg">
                           </i></li><i className="gspr icfbg">
                           <li className="gf-li">
-                            <a href="http://twitter.com/#!/eBay" _exsp="m571.l2943" className="thrd gf-i">
+                            <a href="http://twitter.com/#!/eBay" exsp="m571.l2943" className="thrd gf-i">
                               <i className="gspr ictwg">Twitter
                               </i></a><i className="gspr ictwg">
                             </i></li><i className="gspr ictwg">
                             <li className="gf-li">
-                              <a href="https://plus.google.com/+eBay/posts" _exsp="m571.l3223" className="thrd gf-i">
+                              <a href="https://plus.google.com/+eBay/posts" exsp="m571.l3223" className="thrd gf-i">
                                 <i className="gspr icgpg">Google+
                                 </i></a><i className="gspr icgpg">
                               </i></li><i className="gspr icgpg">
@@ -152,44 +152,44 @@ module.exports = {
                       <ul>
                         <li className="gf-li">
                           <h3 className="gf-bttl">
-                            <a href="http://www.ebayinc.com" _exsp="m571.l2932" className="gf-bttl thrd">
+                            <a href="http://www.ebayinc.com" exsp="m571.l2932" className="gf-bttl thrd">
                               About eBay
                             </a>
                           </h3>
                         </li>
                         <li className="gf-li">
-                          <a href="https://www.ebayinc.com/our-company/" _exsp="m571.l2933" className="thrd">
+                          <a href="https://www.ebayinc.com/our-company/" exsp="m571.l2933" className="thrd">
                             Company info
                           </a>
                         </li>
                         <li className="gf-li">
-                          <a href="https://www.ebayinc.com/stories/news/" _exsp="m571.l2934" className="thrd">News</a>
+                          <a href="https://www.ebayinc.com/stories/news/" exsp="m571.l2934" className="thrd">News</a>
                         </li>
                         <li className="gf-li">
-                          <a href="https://investors.ebayinc.com" _exsp="m571.l3269" className="thrd">
+                          <a href="https://investors.ebayinc.com" exsp="m571.l3269" className="thrd">
                             Investors
                           </a>
                         </li>
                         <li className="gf-li">
-                          <a href="https://careers.ebayinc.com/" _exsp="m571.l2937" className="thrd">
+                          <a href="https://careers.ebayinc.com/" exsp="m571.l2937" className="thrd">
                             Careers
                           </a>
                         </li>
                         <li className="gf-li">
-                          <a href="http://www.ebaymainstreet.com" _exsp="m571.l2936" className="thrd">
+                          <a href="http://www.ebaymainstreet.com" exsp="m571.l2936" className="thrd">
                             Government relations
                           </a>
                         </li>
                         <li className="gf-li">
-                          <a href="http://cc.ebay.com" _exsp="m571.l2938" className="thrd">
+                          <a href="http://cc.ebay.com" exsp="m571.l2938" className="thrd">
                             Advertise with us
                           </a>
                         </li>
                         <li className="gf-li">
-                          <a href="http://pages.ebay.com/help/policies/overview.html" _sp="m571.l2910" className="thrd">Policies</a>
+                          <a href="http://pages.ebay.com/help/policies/overview.html" sp="m571.l2910" className="thrd">Policies</a>
                         </li>
                         <li className="gf-li">
-                          <a href="http://pages.ebay.com/help/policies/programs-vero-ov.html" _sp="m571.l3418" className="thrd">
+                          <a href="http://pages.ebay.com/help/policies/programs-vero-ov.html" sp="m571.l3418" className="thrd">
                             Verified Rights Owner (VeRO) Program
                           </a>
                         </li>
@@ -204,59 +204,59 @@ module.exports = {
                       <ul>
                         <li className="gf-li">
                           <h3 className="gf-bttl">
-                            <a href="http://ocs.ebay.com/ws/eBayISAPI.dll?CustomerSupport" _sp="m571.l1545" className="gf-bttl thrd">
+                            <a href="http://ocs.ebay.com/ws/eBayISAPI.dll?CustomerSupport" sp="m571.l1545" className="gf-bttl thrd">
                               Help &amp; Contact
                             </a>
                           </h3>
                         </li>
                         <li className="gf-li">
-                          <a href="http://resolutioncenter.ebay.com/" _sp="m571.l1619" className="thrd">
+                          <a href="http://resolutioncenter.ebay.com/" sp="m571.l1619" className="thrd">
                             Resolution Center
                           </a>
                         </li>
                         <li className="gf-li">
-                          <a href="http://pages.ebay.com/sellerinformation/index.html" _sp="m571.l1613" className="thrd">Seller Information Center</a>
+                          <a href="http://pages.ebay.com/sellerinformation/index.html" sp="m571.l1613" className="thrd">Seller Information Center</a>
                         </li>
                         <li className="gf-li">
-                          <a href="http://ocsnext.ebay.com/ocs/cuhome" _sp="m571.l2911" className="thrd">
+                          <a href="http://ocsnext.ebay.com/ocs/cuhome" sp="m571.l2911" className="thrd">
                             Contact us
                           </a>
                         </li>
                         <li className="gf-li" style={{paddingTop: 8}}>
                           <h3 className="gf-bttl">
-                            <a href="http://community.ebay.com" _sp="m571.l2912" className="gf-bttl thrd">
+                            <a href="http://community.ebay.com" sp="m571.l2912" className="gf-bttl thrd">
                               Community
                             </a>
                           </h3>
                         </li>
                         <li className="gf-li">
-                          <a href="http://announcements.ebay.com" _sp="m571.l2913" className="thrd">
+                          <a href="http://announcements.ebay.com" sp="m571.l2913" className="thrd">
                             Announcements
                           </a>
                         </li>
                         <li className="gf-li">
-                          <a href="http://pages.ebay.com/community/answercenter/index.html" _sp="m571.l2914" className="thrd">
+                          <a href="http://pages.ebay.com/community/answercenter/index.html" sp="m571.l2914" className="thrd">
                             Answer center
                           </a>
                         </li>
                         <li className="gf-li">
-                          <a href="http://forums.ebay.com" _exsp="m571.l2939" className="thrd">
+                          <a href="http://forums.ebay.com" exsp="m571.l2939" className="thrd">
                             Discussion boards
                           </a>
                         </li>
                         <li className="gf-li">
-                          <a href="http://givingworks.ebay.com" _exsp="m571.l3271" className="thrd">
+                          <a href="http://givingworks.ebay.com" exsp="m571.l3271" className="thrd">
                             eBay Giving Works
                           </a>
                         </li>
                         <li className="gf-li">
-                          <a href="http://givingworks.ebay.com/browse/celebrities" _exsp="m571.l3272" className="thrd">eBay Celebrity</a>
+                          <a href="http://givingworks.ebay.com/browse/celebrities" exsp="m571.l3272" className="thrd">eBay Celebrity</a>
                         </li>
                         <li className="gf-li">
-                          <a href="http://groups.ebay.com/groups/EbayGroups/1?redirected=1" _exsp="m571.l2941" className="thrd">Groups</a>
+                          <a href="http://groups.ebay.com/groups/EbayGroups/1?redirected=1" exsp="m571.l2941" className="thrd">Groups</a>
                         </li>
                         <li className="gf-li">
-                          <a href="http://www.ebay.com/ets/eBayTopShared" _sp="m571.l2916" className="thrd">
+                          <a href="http://www.ebay.com/ets/eBayTopShared" sp="m571.l2916" className="thrd">
                             eBay top shared
                           </a>
                         </li>
@@ -265,7 +265,7 @@ module.exports = {
                         </li>
                         <li className="gf-li">
                           <div className="gf-flags-wpr">
-                            <a aria-expanded="false" aria-controls="gf-f" role="button" className="thrd" title="eBay country sites" _sp="m571.l2586" href="http://www.ebay.com" id="gf-fbtn">
+                            <a aria-expanded="false" aria-controls="gf-f" role="button" className="thrd" title="eBay country sites" sp="m571.l2586" href="http://www.ebay.com" id="gf-fbtn">
                               United States<b className="gf-if gspr flus" /> <b id="gf-fbtn-arr" className="gh-sprRetina" />
                             </a>
                             <div id="gf-f" style={{display: 'none'}}>
@@ -417,44 +417,44 @@ module.exports = {
                     <td colSpan={2}>
                       <ul id="gf-l" className="gf-lb">
                         <li className="gf-li">
-                          <a href="http://www.ebayinc.com" _exsp="m571.l2602" className="thrd gf-bar-a">
+                          <a href="http://www.ebayinc.com" exsp="m571.l2602" className="thrd gf-bar-a">
                             About eBay
                           </a>
                         </li>
                         <li className="gf-li">
-                          <a href="http://announcements.ebay.com" _exsp="m571.l2935" className="thrd gf-bar-a">Announcements</a>
+                          <a href="http://announcements.ebay.com" exsp="m571.l2935" className="thrd gf-bar-a">Announcements</a>
                         </li>
                         <li className="gf-li">
-                          <a href="http://community.ebay.com" _exsp="m571.l1540" className="thrd gf-bar-a">
+                          <a href="http://community.ebay.com" exsp="m571.l1540" className="thrd gf-bar-a">
                             Community
                           </a>
                         </li>
                         <li className="gf-li">
-                          <a href="http://pages.ebay.com/securitycenter/index.html" _exsp="m571.l2616" className="thrd gf-bar-a">Security Center</a>
+                          <a href="http://pages.ebay.com/securitycenter/index.html" exsp="m571.l2616" className="thrd gf-bar-a">Security Center</a>
                         </li>
                         <li className="gf-li">
-                          <a href="http://resolutioncenter.ebay.com/" _sp="m571.l1619" className="thrd gf-bar-a">Resolution Center</a>
+                          <a href="http://resolutioncenter.ebay.com/" sp="m571.l1619" className="thrd gf-bar-a">Resolution Center</a>
                         </li>
                         <li className="gf-li">
-                          <a href="http://pages.ebay.com/sellerinformation/index.html" _exsp="m571.l1613" className="thrd gf-bar-a">
+                          <a href="http://pages.ebay.com/sellerinformation/index.html" exsp="m571.l1613" className="thrd gf-bar-a">
                             Seller Information Center
                           </a>
                         </li>
                         <li className="gf-li">
-                          <a href="http://pages.ebay.com/help/policies/overview.html" _exsp="m571.l2604" className="thrd gf-bar-a">Policies</a>
+                          <a href="http://pages.ebay.com/help/policies/overview.html" exsp="m571.l2604" className="thrd gf-bar-a">Policies</a>
                         </li>
                         <li className="gf-li">
-                          <a href="https://www.ebaypartnernetwork.com/files/hub/en-US/index.html" _exsp="m571.l3947" className="thrd gf-bar-a">
+                          <a href="https://www.ebaypartnernetwork.com/files/hub/en-US/index.html" exsp="m571.l3947" className="thrd gf-bar-a">
                             Affiliates
                           </a>
                         </li>
                         <li className="gf-li">
-                          <a href="http://ocs.ebay.com/ws/eBayISAPI.dll?CustomerSupport" _sp="m571.l1545" className="thrd gf-bar-a">
+                          <a href="http://ocs.ebay.com/ws/eBayISAPI.dll?CustomerSupport" sp="m571.l1545" className="thrd gf-bar-a">
                             Help &amp; Contact
                           </a>
                         </li>
                         <li className="gf-li">
-                          <a href="http://pages.ebay.com/sitemap.html" _exsp="m571.l2909" className="thrd gf-bar-a">Site Map</a>
+                          <a href="http://pages.ebay.com/sitemap.html" exsp="m571.l2909" className="thrd gf-bar-a">Site Map</a>
                         </li>
                       </ul>
                     </td>

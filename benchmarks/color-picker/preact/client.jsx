@@ -1,13 +1,10 @@
-var preact = require('preact');
-var h = preact.h;
-var render = preact.render;
+const preact = require('preact');
+const App = require('./components/App');
 
-var App = require('./components/App');
-
-var mountNode = document.getElementById("mount");
+const mountNode = document.getElementById("mount");
 
 if (window.colors) {
-    render(
+    preact.render(
         <App colors={window.colors}/>,
         mountNode,
         mountNode.firstChild);

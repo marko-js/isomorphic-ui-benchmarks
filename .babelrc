@@ -1,0 +1,15 @@
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "loose": true,
+        "modules": false,
+        "targets": {
+          "node": "current",
+          "browsers": "Last 1 Chrome version, Last 1 Safari version, Last 1 Firefox version"
+        }
+      }
+    ]
+  ]
+}
