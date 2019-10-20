@@ -25,7 +25,7 @@ window.addBench('preact', function(el, colors) {
         currentDone();
     }
 
-    render(
+    preact.render(
         <App colors={colors} onMount={onMount} onUpdate={onUpdate} />,
         el);
 

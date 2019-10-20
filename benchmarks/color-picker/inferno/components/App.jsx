@@ -1,7 +1,7 @@
 var Inferno = require('inferno');
 var Component = Inferno.Component;
 var createVNode = Inferno.createVNode;
-var createVTextNode = Inferno.createVTextNode;
+var createTextVNode = Inferno.createTextVNode;
 var linkEvent = Inferno.linkEvent;
 
 function handleColorClick({component, colorIndex}) {
