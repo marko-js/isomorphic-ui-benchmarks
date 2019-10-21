@@ -5,7 +5,7 @@ const App = require("./components/App");
 const mountNode = document.getElementById("mount");
 
 if (window.colors) {
-  ReactDOM.render(<App colors={window.colors} />, mountNode);
+  ReactDOM.hydrate(<App colors={window.colors} />, mountNode);
 
   console.log("Re-rendering on client completed");
 }

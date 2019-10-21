@@ -6,7 +6,7 @@ var App = require('./components/App');
 var mountNode = document.getElementById("searchResultsMount");
 
 if (mountNode) {
-    ReactDOM.render(
+    ReactDOM.hydrate(
         <App searchResultsData={window.searchResultsData}/>,
         mountNode);
 

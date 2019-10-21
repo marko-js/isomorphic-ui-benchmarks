@@ -40,6 +40,7 @@
     "express": "^4.17.1",
     "format-number": "^3.0.0",
     "inferno": "^7.3.2",
+    "inferno-hydrate": "^7.3.2",
     "inferno-server": "^7.3.2",
     "lasso": "^3.3.1",
     "lasso-marko": "^2.4.8",

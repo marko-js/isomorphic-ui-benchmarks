@@ -1,4 +1,5 @@
 var Inferno = require('inferno');
+var hydrate = require('inferno-hydrate').hydrate;
 var createVNode = Inferno;
 var render = Inferno.render;
 
@@ -7,7 +8,7 @@ var App = require('./components/App');
 var mountNode = document.getElementById("mount");
 
 if (window.colors) {
-    render(<App colors={window.colors}/>, mountNode);
+    hydrate(<App colors={window.colors}/>, mountNode);
 
     console.log('Re-rendering on client completed');
 }

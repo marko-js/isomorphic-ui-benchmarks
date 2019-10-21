@@ -5,7 +5,7 @@ var createTextVNode = Inferno.createTextVNode;
 var linkEvent = Inferno.linkEvent;
 
 function handleColorClick({component, colorIndex}) {
-    component.setStateSync({
+    component.setState({
         selectedColorIndex: colorIndex
     });
 }
@@ -29,7 +29,7 @@ module.exports = class extends Component {
     renderColor(color, i) {
         var selectedColorIndex = this.state.selectedColorIndex;
         var style = {
-            backgroundColor: color.hex
+            "background-color": color.hex
         };
 
         var className = 'color';

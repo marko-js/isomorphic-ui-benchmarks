@@ -1,4 +1,5 @@
 var Inferno = require('inferno');
+var hydrate = require('inferno-hydrate').hydrate;
 var createVNode = Inferno.createVNode;
 
 var App = require('./components/App');
@@ -6,7 +7,7 @@ var App = require('./components/App');
 var mountNode = document.getElementById("searchResultsMount");
 
 if (mountNode) {
-    Inferno.render(
+    hydrate(
         <App searchResultsData={window.searchResultsData}/>,
         mountNode);
 
