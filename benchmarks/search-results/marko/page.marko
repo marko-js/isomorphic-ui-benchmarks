@@ -1,8 +1,11 @@
-<include(input.pageLayout)>
-    <@body>
-        <app(input.searchResults)/>
-        <script>
+<if(typeof input.pageLayout === "string")>${input.pageLayout}</if>
+<else>
+    <${input.pageLayout}>
+        <@body>
+            <app(input.searchResults)/>
+            <script>
             window.searchResultsData=${JSON.stringify(input.searchResults)};
         </script>
-    </@body>
-</include>
+        </@body>
+    </>
+</else>

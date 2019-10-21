@@ -17,27 +17,30 @@ class {
 $ var colors = input.colors;
 $ var selectedColorIndex = state.selectedColorIndex;
 $ var selectedColor = colors[selectedColorIndex];
-
 <div.colors>
     <h1>Choose your favorite color:</h1>
     <div.colors>
-        <ul if(colors.length)>
-            <for(i, color in colors)>
-                $ {
-                    var className = 'color';
-                    if (selectedColorIndex === i) {
-                        className += ' selected';
+        <if(colors.length)>
+            <ul>
+                <for|i, color| in=colors>
+                    $ {
+                        var className = "color";
+                                            if (selectedColorIndex === i) {
+                                                className += " selected";
+                                            }
                     }
-                }
-                <li class=className style="background-color:${color.hex}"
-                    on-click('handleColorClick', i)>
-                    ${color.name}
-                </li>
-            </for>
-        </ul>
-        <div else>
-            No colors!
-        </div>
+                    <li
+                        class=className
+                        style=`background-color:${color.hex}`
+                        on-click("handleColorClick", i)>
+                        ${color.name}
+                    </li>
+                </for>
+            </ul>
+        </if>
+        <else>
+            <div>No colors!</div>
+        </else>
     </div>
     <div>
         You chose:

@@ -10,7 +10,7 @@ class {
 
 <div.search-results>
     <div>
-        <for(item in (input.items || window.searchResultsData.items))>
+        <for|item| of=(input.items || window.searchResultsData.items)>
             <!-- Loop over the search results items: -->
             <app-search-results-item(item)/>
         </for>

@@ -1,25 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
+        <meta charset="UTF-8"/>
         <title>Isomorphic UI Benchmarks</title>
     </head>
     <body>
         <ul>
-            <li for(benchmark in data.benchmarks)>
-                <h1>${benchmark.name}</h1>
-                <p>
-                    <a href="${process.env.URL_PREFIX || ''}/benchmark/${benchmark.name}/">Run Client-side Benchmark</a>
-                </p>
-                <p>
-                    View pages:
-                    <ul>
-                        <li for(bench in benchmark.benches)>
-                            <a href="${process.env.URL_PREFIX || ''}/${benchmark.name}/${bench.name}/">${bench.name}</a>
-                        </li>
-                    </ul>
-                </p>
-            </li>
+            <for|benchmark| of=data.benchmarks>
+                <li>
+                    <h1>${benchmark.name}</h1>
+                    <p>
+                        <a href=`${process.env.URL_PREFIX || ""}/benchmark/${
+                            benchmark.name
+                        }/`>Run Client-side Benchmark</a>
+                    </p>
+                    <p>
+                        View pages:
+                        <ul>
+                            <for|bench| of=benchmark.benches>
+                                <li>
+                                    <a href=`${process.env.URL_PREFIX || ""}/${
+                                        benchmark.name
+                                    }/${bench.name}/`>${bench.name}</a>
+                                </li>
+                            </for>
+                        </ul>
+                    </p>
+                </li>
+            </for>
         </ul>
     </body>
 </html>

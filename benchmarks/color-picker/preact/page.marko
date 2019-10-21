@@ -1,10 +1,9 @@
-import serverRender from './util/serverRender';
-import App from './components/App';
+import serverRender from './util/serverRender'
+import App from './components/App'
 
-<include(input.pageLayout)>
+<${input.pageLayout}>
     <@body>
         $ var renderedHTML = serverRender(App, input.colors);
-
         <div id="mount">$!{renderedHTML}</div>
         <!--
         In order for behavior to be attached to the
@@ -21,4 +20,4 @@ import App from './components/App';
             window.colors=${JSON.stringify(input.colors)};
         </script>
     </@body>
-</include>
+</>

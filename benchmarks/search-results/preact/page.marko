@@ -1,7 +1,7 @@
-import serverRender from './util/serverRender';
-import App from './components/App';
+import serverRender from './util/serverRender'
+import App from './components/App'
 
-<include(input.pageLayout)>
+<${input.pageLayout}>
     <@body>
         $ var renderedHTML = serverRender(App, input.searchResults);
         <div id="searchResultsMount">$!{renderedHTML}</div>
@@ -20,4 +20,4 @@ import App from './components/App';
             window.searchResultsData=${JSON.stringify(input.searchResults)};
         </script>
     </@body>
-</include>
+</>

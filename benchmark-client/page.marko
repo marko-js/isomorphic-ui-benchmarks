@@ -1,36 +1,41 @@
-import fs from 'fs';
-import path from 'path';
+import fs from 'fs'
+import path from 'path'
 
 $ var dependencies = [
     require.resolve("./browser.json"),
-    "require-run: " + require.resolve('./client'),
-    "require-run: " + require.resolve('../benchmarks/' + out.global.benchmark.name + "/client.js")
+    "require-run: " + require.resolve("./client"),
+    "require-run: " +
+        require.resolve(
+            "../benchmarks/" + out.global.benchmark.name + "/client.js"
+        )
 ];
-
-<lasso-page dependencies=dependencies name=out.global.benchmark.name cache-key=out.global.benchmark.name />
+<lasso-page
+    dependencies=dependencies
+    name=out.global.benchmark.name
+    cache-key=out.global.benchmark.name/>
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8"/>
         <title>${out.global.benchmark.name} | Marko Benchmark</title>
         <lasso-head/>
-        <link href="${process.env.URL_PREFIX || ''}/static/styles/${out.global.benchmark.name}.css" rel="stylesheet">
+        <link
+            href=`${process.env.URL_PREFIX || ""}/static/styles/${
+                out.global.benchmark.name
+            }.css`
+            rel="stylesheet"/>
     </head>
     <body>
         <h1>${out.global.benchmark.name} | Marko Benchmark</h1>
-
         <app benchmark=out.global.benchmark/>
-
         <!--
         Inject the body <script> tags to include the required client-side code:
         -->
         <lasso-body/>
         <init-components/>
-
-        <for(bundle in input.bundles)>
-            <script src=bundle></script>
+        <for|bundle| of=input.bundles>
+            <script src=bundle/>
         </for>
-
         <!--
         If launched using the browser-refresh app launcher then a <script>
         tag will be injected to enable instant page refreshes when any

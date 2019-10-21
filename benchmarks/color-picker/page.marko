@@ -3,13 +3,18 @@
     <head>
         <meta charset="UTF-8"/>
         <title>${out.global.title} • Isomorphic UI Benchmarks</title>
-        <link href="${process.env.URL_PREFIX || ''}/static/styles/color-picker.css" rel="stylesheet">
+        <link
+            href=`${process.env.URL_PREFIX ||
+                ""}/static/styles/color-picker.css`
+            rel="stylesheet"/>
     </head>
     <body>
         <h1>${out.global.title} • Isomorphic UI Benchmarks</h1>
         <ol style="display: none;" id="results"/>
-
-        <include(input.body)/>
+        <if(typeof input.body === "string")>${input.body}</if>
+        <else>
+            <${input.body}/>
+        </else>
         <script>
             window.addBench = function() {};
             window.onMount = function() {
@@ -20,6 +25,6 @@
                 }
             }
         </script>
-        <script src=out.global.jsBundle></script>
+        <script src=out.global.jsBundle/>
     </body>
 </html>
