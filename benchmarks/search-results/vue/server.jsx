@@ -1,26 +1,25 @@
-const Vue = require('vue');
-const renderToString = require('vue-server-renderer').createRenderer().renderToString;
+const Vue = require("vue");
+const renderToString = require("vue-server-renderer").createRenderer()
+  .renderToString;
 
-
-var App = require('./components/App.server').default;
+var App = require("./components/App.server").default;
 
 module.exports = function(getNextSearchResults) {
-    return function benchFn(done) {
+  return function benchFn(done) {
+    const vm = new Vue({
+      render(h) {
+        return <App searchResultsData={getNextSearchResults()} />;
+      }
+    });
 
-        const vm = new Vue({
-            render(h) {
-                return <App searchResultsData={getNextSearchResults()}/>
-            }
-        });
+    renderToString(vm, function(err, html) {
+      if (err) {
+        throw err;
+      }
 
-        renderToString(vm, function(err, html) {
-            if (err) {
-                throw err;
-            }
+      done();
 
-            done();
-
-            return html;
-        });
-    };
+      return html;
+    });
+  };
 };

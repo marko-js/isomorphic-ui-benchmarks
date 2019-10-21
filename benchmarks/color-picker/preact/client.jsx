@@ -1,42 +1,41 @@
-const preact = require('preact');
-const App = require('./components/App');
+const preact = require("preact");
+const App = require("./components/App");
 
 const mountNode = document.getElementById("mount");
 
 if (window.colors) {
-    preact.render(
-        <App colors={window.colors}/>,
-        mountNode,
-        mountNode.firstChild);
+  preact.render(
+    <App colors={window.colors} />,
+    mountNode,
+    mountNode.firstChild
+  );
 
-    console.log('Re-rendering on client completed');
+  console.log("Re-rendering on client completed");
 }
 
-window.addBench('preact', function(el, colors) {
-    var widget;
-    var currentDone;
-    var selectedColorIndex = 0;
+window.addBench("preact", function(el, colors) {
+  var widget;
+  var currentDone;
+  var selectedColorIndex = 0;
 
-    function onMount(instance) {
-        widget = instance;
-    }
+  function onMount(instance) {
+    widget = instance;
+  }
 
-    function onUpdate() {
-        currentDone();
-    }
+  function onUpdate() {
+    currentDone();
+  }
 
-    preact.render(
-        <App colors={colors} onMount={onMount} onUpdate={onUpdate} />,
-        el);
+  preact.render(
+    <App colors={colors} onMount={onMount} onUpdate={onUpdate} />,
+    el
+  );
 
+  return function(done) {
+    widget.setState({
+      selectedColorIndex: ++selectedColorIndex % colors.length
+    });
 
-
-    return function(done) {
-        widget.setState({
-                selectedColorIndex: (++selectedColorIndex) % colors.length
-            });
-
-        currentDone = done;
-
-    };
+    currentDone = done;
+  };
 });

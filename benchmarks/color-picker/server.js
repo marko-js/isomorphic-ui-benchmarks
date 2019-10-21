@@ -1,11 +1,11 @@
-'use strict';
-require('marko/node-require');
+"use strict";
+require("marko/node-require");
 
-var colors = require('./colors.json');
+var colors = require("./colors.json");
 module.exports = function(bench) {
-    var serverFactory = bench.serverFactory;
-    var fn = serverFactory(colors);
-    return {
-        fn
-    };
+  var serverFactory = bench.serverFactory;
+  var fn = serverFactory(colors);
+  return {
+    fn
+  };
 };

@@ -1,5 +1,4 @@
-isomorphic-ui-benchmarks
-========================================
+# isomorphic-ui-benchmarks
 
 This repo includes multiple benchmarks for various UI libraries. Each benchmark is designed to measure rendering performance (on the server and in the browser) and the time that it takes to update the DOM (client-side only).
 
@@ -13,7 +12,7 @@ This repo includes multiple benchmarks for various UI libraries. Each benchmark 
 
 <img width="1254" alt="Color Picker Benchmarks" src="https://cloud.githubusercontent.com/assets/978214/26432262/5309d78e-40af-11e7-9a8c-5ce522c997b4.png">
 
------
+---
 
 Below are the results of a run on March 3, 2017
 

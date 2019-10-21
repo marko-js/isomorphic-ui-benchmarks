@@ -1,15 +1,15 @@
-var preact = require('preact');
+var preact = require("preact");
 var h = preact.h;
-var renderToString = require('preact-render-to-string');
+var renderToString = require("preact-render-to-string");
 
-var App = require('./components/App');
+var App = require("./components/App");
 
 module.exports = function(getNextSearchResults) {
-    return function benchFn() {
+  return function benchFn() {
+    var html = renderToString(
+      <App searchResultsData={getNextSearchResults()} />
+    );
 
-        var html = renderToString(
-                <App searchResultsData={getNextSearchResults()}/>);
-
-        return html;
-    };
+    return html;
+  };
 };

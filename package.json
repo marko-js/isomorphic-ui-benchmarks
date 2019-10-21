@@ -20,7 +20,8 @@
     "bundle-react": "node ./scripts/rollup.js react",
     "bundle-preact": "node ./scripts/rollup.js preact",
     "bundle-vue": "npm run bundle-vue-server && node ./scripts/rollup.js vue",
-    "bundle-vue-server": "webpack --config benchmarks/color-picker/vue/webpack.config.js && webpack --config benchmarks/search-results/vue/webpack.config.js"
+    "bundle-vue-server": "webpack --config benchmarks/color-picker/vue/webpack.config.js && webpack --config benchmarks/search-results/vue/webpack.config.js",
+    "format": "prettier \"**/*.{json,md,js,jsx}\" --write && eslint ."
   },
   "author": "Patrick Steele-Idem <pnidem@gmail.com",
   "license": "MIT",
@@ -64,5 +65,12 @@
     "vue-template-compiler": "^2.6.10",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.9"
+  },
+  "devDependencies": {
+    "eslint": "^6.5.1",
+    "eslint-config-prettier": "^6.4.0",
+    "husky": "^3.0.9",
+    "lint-staged": "^9.4.2",
+    "prettier": "^1.18.2"
   }
 }

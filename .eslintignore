@@ -1,0 +1,7 @@
+.vscode
+package.json
+package-lock.json
+node_modules
+build
+*.marko.js
+App.server.js

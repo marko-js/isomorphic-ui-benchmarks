@@ -1,81 +1,78 @@
-require('../init');
+require("../init");
 
-const fs = require('fs');
-const path = require('path');
-const exec = require('child_process').execSync;
-const benchmarks = require('../benchmarks');
-const mkdirp = require('mkdirp');
-const http = require('http');
-const buildDir = path.join(__dirname, '../build');
+const fs = require("fs");
+const path = require("path");
+const exec = require("child_process").execSync;
+const benchmarks = require("../benchmarks");
+const mkdirp = require("mkdirp");
+const http = require("http");
+const buildDir = path.join(__dirname, "../build");
 
 var baseUrl;
-var routes = [
-    '/'
-];
+var routes = ["/"];
 
-benchmarks.forEach((benchmark) => {
-    var benchmarkName = benchmark.name;
+benchmarks.forEach(benchmark => {
+  var benchmarkName = benchmark.name;
 
-    benchmark.benches.forEach((bench) => {
-        var libName = bench.name;
-        routes.push(`/${benchmarkName}/${libName}`);
-        routes.push(`/benchmark/${benchmarkName}`);
-    });
+  benchmark.benches.forEach(bench => {
+    var libName = bench.name;
+    routes.push(`/${benchmarkName}/${libName}`);
+    routes.push(`/benchmark/${benchmarkName}`);
+  });
 });
 
-
 function buildRoute(routePath) {
-    return new Promise((resolve, reject) => {
-        var outputFile = path.join(buildDir, routePath, 'index.html');
-        mkdirp.sync(path.dirname(outputFile));
+  return new Promise((resolve, reject) => {
+    var outputFile = path.join(buildDir, routePath, "index.html");
+    mkdirp.sync(path.dirname(outputFile));
 
-        var url = `${baseUrl}${routePath}`;
+    var url = `${baseUrl}${routePath}`;
 
-        console.log(`Building page "${outputFile}"...`);
-        console.log(`URL:`, url);
+    console.log(`Building page "${outputFile}"...`);
+    console.log(`URL:`, url);
 
-        http.get(url, (res) => {
-            const statusCode = res.statusCode;
+    http.get(url, res => {
+      const statusCode = res.statusCode;
 
-            console.log('Status code:', statusCode);
+      console.log("Status code:", statusCode);
 
-            if (statusCode !== 200) {
-                return reject(new Error(`Request Failed. Status Code: ${statusCode}`));
-            }
+      if (statusCode !== 200) {
+        return reject(new Error(`Request Failed. Status Code: ${statusCode}`));
+      }
 
-            res.pipe(fs.createWriteStream(outputFile))
-                .on('error', reject)
-                .on('finish', resolve);
-        });
+      res
+        .pipe(fs.createWriteStream(outputFile))
+        .on("error", reject)
+        .on("finish", resolve);
     });
+  });
 }
 
-var buildPromise = require('../server')
-    .then((port) => {
-        baseUrl = 'http://localhost:' + port;
-    })
-    .then(() => {
-        var buildRoutesPromise = Promise.resolve();
-        routes.forEach((routePath) => {
-            buildRoutesPromise = buildRoutesPromise.then(() => {
-                return buildRoute(routePath);
-            });
-        });
-
-        return buildRoutesPromise;
-    })
-    .then(() => {
-        exec(`cp -R ${__dirname + '/../static'} ${buildDir + '/'}`);
-    })
-    .then(() => {
-        console.log('Build complete!');
-        process.exit(0);
-    })
-    .catch((err) => {
-        console.error('Build failed!', err);
-        process.exit(1);
+require("../server")
+  .then(port => {
+    baseUrl = "http://localhost:" + port;
+  })
+  .then(() => {
+    var buildRoutesPromise = Promise.resolve();
+    routes.forEach(routePath => {
+      buildRoutesPromise = buildRoutesPromise.then(() => {
+        return buildRoute(routePath);
+      });
     });
 
+    return buildRoutesPromise;
+  })
+  .then(() => {
+    exec(`cp -R ${__dirname + "/../static"} ${buildDir + "/"}`);
+  })
+  .then(() => {
+    console.log("Build complete!");
+    process.exit(0);
+  })
+  .catch(err => {
+    console.error("Build failed!", err);
+    process.exit(1);
+  });
 
 //
 // require('./project').build().then((buildResult) => {
