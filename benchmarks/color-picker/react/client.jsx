@@ -1,35 +1,26 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
+const React = require("react");
+const ReactDOM = require("react-dom");
+const App = require("./components/App");
 
-var App = require('./components/App');
-
-var mountNode = document.getElementById("mount");
+const mountNode = document.getElementById("mount");
 
 if (window.colors) {
-    ReactDOM.render(
-        <App colors={window.colors}/>,
-        mountNode);
+  ReactDOM.render(<App colors={window.colors} />, mountNode);
 
-    console.log('Re-rendering on client completed');
+  console.log("Re-rendering on client completed");
 }
 
-window.addBench('react', function(el, colors) {
-    var widget;
+window.addBench("react", function(el, colors) {
+  let setSelectedColorIndex;
+  let selectedColorIndex = 0;
 
-    function onMount(instance) {
-        widget = instance;
-    }
+  ReactDOM.render(
+    <App colors={colors} onMount={_set => (setSelectedColorIndex = _set)} />,
+    el
+  );
 
-    ReactDOM.render(
-        <App colors={colors} onMount={onMount}/>,
-        el);
-
-
-    var selectedColorIndex = 0;
-
-    return function(done) {
-        widget.setState({
-                selectedColorIndex: (++selectedColorIndex) % colors.length
-            }, done);
-    };
+  return done => {
+    setSelectedColorIndex(++selectedColorIndex % colors.length);
+    done();
+  };
 });
