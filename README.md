@@ -6,24 +6,24 @@ This repo includes multiple benchmarks for various UI libraries. Each benchmark 
 
 ## Search results
 
-<img width="1247" alt="Search Results Benchmarks" src="https://cloud.githubusercontent.com/assets/978214/26432264/5761b9c8-40af-11e7-8d63-0e4a0ccc5f91.png">
+<img width="1335" alt="Search Results Benchmarks" src="https://user-images.githubusercontent.com/4985201/67251108-ca344780-f422-11e9-9ca0-cce6ed1aad6b.png">
 
 ## Color picker
 
-<img width="1254" alt="Color Picker Benchmarks" src="https://cloud.githubusercontent.com/assets/978214/26432262/5309d78e-40af-11e7-9a8c-5ce522c997b4.png">
+<img width="1323" alt="Color Picker Benchmarks" src="https://user-images.githubusercontent.com/4985201/67251074-a96bf200-f422-11e9-9bee-a15124f4b10d.png">
 
 ---
 
-Below are the results of a run on March 3, 2017
+Below are the results of a run on October 21, 2019
 
 Environment:
 
-- Node.js v8.4.0
-- MacBook Pro (15-inch, 2016)
-- Processor: 2.9 GHz Intel Core i7
+- Node.js v10.16.1
+- MacBook Pro (13-inch, 2017)
+- Processor: 3.5 GHz Intel Core i7
 - Memory: 16 GB 2133 MHz LPDDR3
-- macOS Sierra: 10.12.6 (16G29)
-- Google Chrome Version 61.0.3163.91 (Official Build) (64-bit)
+- macOS Mojave: 10.14.6
+- Google Chrome Version 77.0.3865.120 (Official Build) (64-bit)
 
 ## Server-side
 
@@ -36,23 +36,23 @@ Running "search-results"...
 
 Running benchmark "marko"...
 
-marko x 5,783 ops/sec ±1.02% (76 runs sampled)
+marko x 6,399 ops/sec ±2.71% (84 runs sampled)
 
 Running benchmark "preact"...
 
-preact x 881 ops/sec ±1.69% (90 runs sampled)
+preact x 746 ops/sec ±2.88% (81 runs sampled)
 
 Running benchmark "react"...
 
-react x 40.54 ops/sec ±3.26% (52 runs sampled)
+react x 765 ops/sec ±5.02% (72 runs sampled)
 
 Running benchmark "vue"...
 
-vue x 1,331 ops/sec ±2.71% (76 runs sampled)
+vue x 2,657 ops/sec ±4.41% (60 runs sampled)
 
 Running benchmark "inferno"...
 
-inferno x 695 ops/sec ±1.02% (87 runs sampled)
+inferno x 3,014 ops/sec ±1.78% (87 runs sampled)
 
 Fastest is marko
 
@@ -67,23 +67,23 @@ Running "color-picker"...
 
 Running benchmark "marko"...
 
-marko x 10,997 ops/sec ±0.79% (86 runs sampled)
+marko x 24,540 ops/sec ±1.48% (86 runs sampled)
 
 Running benchmark "preact"...
 
-preact x 5,208 ops/sec ±1.24% (89 runs sampled)
+preact x 4,587 ops/sec ±1.81% (85 runs sampled)
 
 Running benchmark "react"...
 
-react x 217 ops/sec ±3.31% (74 runs sampled)
+react x 4,300 ops/sec ±4.72% (72 runs sampled)
 
 Running benchmark "vue"...
 
-vue x 3,384 ops/sec ±2.22% (73 runs sampled)
+vue x 9,120 ops/sec ±5.56% (70 runs sampled)
 
 Running benchmark "inferno"...
 
-inferno x 4,078 ops/sec ±0.75% (90 runs sampled)
+inferno x 21,453 ops/sec ±2.12% (84 runs sampled)
 
 Fastest is marko
 
@@ -93,7 +93,7 @@ Fastest is marko
 DONE!
 
 ~/marko-js/isomorphic-ui-benchmarks (master)>  node -v
-v8.4.0
+v10.16.1
 ```
 
 # Client-side
@@ -107,16 +107,16 @@ Warming up...
 Warmup complete.
 Running "search-results"...
 Running benchmark "marko"...
-marko x 355 ops/sec ±1.28% (56 runs sampled)
+marko x 175 ops/sec ±1.84% (53 runs sampled)
 Running benchmark "preact"...
-preact x 267 ops/sec ±1.66% (57 runs sampled)
+preact x 132 ops/sec ±1.66% (48 runs sampled)
 Running benchmark "react"...
-react x 233 ops/sec ±1.76% (54 runs sampled)
+react x 210 ops/sec ±1.36% (53 runs sampled)
 Running benchmark "vue"...
-vue x 197 ops/sec ±3.40% (55 runs sampled)
+vue x 142 ops/sec ±1.31% (52 runs sampled)
 Running benchmark "inferno"...
-inferno x 355 ops/sec ±1.24% (57 runs sampled)
-Fastest is marko,inferno
+inferno x 239 ops/sec ±1.24% (55 runs sampled)
+Fastest is inferno
 ```
 
 ## Color picker
@@ -128,15 +128,15 @@ Warming up...
 Warmup complete.
 Running "color-picker"...
 Running benchmark "marko"...
-marko x 7,661 ops/sec ±1.03% (59 runs sampled)
+marko x 6,008 ops/sec ±1.66% (34 runs sampled)
 Running benchmark "preact"...
-preact x 3,914 ops/sec ±1.16% (24 runs sampled)
+preact x 6,435 ops/sec ±0.96% (59 runs sampled)
 Running benchmark "react"...
-react x 3,076 ops/sec ±2.21% (20 runs sampled)
+react x 7,358 ops/sec ±1.43% (58 runs sampled)
 Running benchmark "vue"...
-vue x 5,003 ops/sec ±3.07% (30 runs sampled)
+vue x 4,291 ops/sec ±1.96% (55 runs sampled)
 Running benchmark "inferno"...
-inferno x 8,880 ops/sec ±0.99% (60 runs sampled)
+inferno x 17,078 ops/sec ±2.17% (60 runs sampled)
 Fastest is inferno
 ```
 
