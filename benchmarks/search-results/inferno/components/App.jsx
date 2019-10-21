@@ -15,7 +15,7 @@ module.exports = class extends Component {
 
     return (
       <div className="search-results">
-        <div>
+        <div $HasKeyedChildren>
           {searchResultsData.items.map(function(item, i) {
             return <SearchResultsItem key={i} item={item} />;
           })}

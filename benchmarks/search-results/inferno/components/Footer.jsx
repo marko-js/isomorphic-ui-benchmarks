@@ -2,7 +2,7 @@ var Inferno = require("inferno");
 var createVNode = Inferno.createVNode;
 var createTextVNode = Inferno.createTextVNode;
 
-module.exports = function() {
+function Footer() {
   return (
     <footer id="glbfooter" role="contentinfo" className="gh-w">
       <div>
@@ -916,3 +916,16 @@ module.exports = function() {
     </footer>
   );
 };
+
+/*
+ * Footer can be optimized by using defaultHooks
+ * We know all the content of footer is static, so it never needs to update
+ * We can take advantage of that by defining defaultHooks SCU => false
+ */
+Footer.defaultHooks = {
+  onComponentShouldUpdate: function() {
+    return false;
+  }
+};
+
+module.exports = Footer;

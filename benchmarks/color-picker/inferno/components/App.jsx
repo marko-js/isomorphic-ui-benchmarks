@@ -39,6 +39,7 @@ module.exports = class extends Component {
 
     return (
       <li
+        $HasVNodeChildren
         className={className}
         style={style}
         onClick={linkEvent(
@@ -46,7 +47,7 @@ module.exports = class extends Component {
           handleColorClick
         )}
       >
-        {color.name}
+        {createTextVNode(color.name)}
       </li>
     );
   }
@@ -54,7 +55,7 @@ module.exports = class extends Component {
   renderColors(colors) {
     if (colors.length) {
       return (
-        <ul>
+        <ul $HasNonKeyedChildren>
           {colors.map((color, i) => {
             return this.renderColor(color, i);
           })}
@@ -73,10 +74,10 @@ module.exports = class extends Component {
     return (
       <div class="colors">
         <h1>Choose your favorite color:</h1>
-        <div class="colors">{this.renderColors(colors)}</div>
+        <div class="colors" $HasVNodeChildren>{this.renderColors(colors)}</div>
         <div>
           You chose:
-          <div className="chosen-color">{selectedColor.name}</div>
+          <div className="chosen-color" $HasVNodeChildren>{createTextVNode(selectedColor.name)}</div>
         </div>
       </div>
     );
