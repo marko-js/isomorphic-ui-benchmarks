@@ -1,708 +1,487 @@
 var app = (function () {
-'use strict';
+  'use strict';
 
-var commonjsGlobal = typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
+  var n,
+      l,
+      u,
+      t,
+      i,
+      r,
+      o,
+      f = {},
+      e = [],
+      c = /acit|ex(?:s|g|n|p|$)|rph|grid|ows|mnc|ntw|ine[ch]|zoo|^ord|^--/i;
 
+  function s(n, l) {
+    for (var u in l) n[u] = l[u];
 
+    return n;
+  }
 
+  function a(n) {
+    var l = n.parentNode;
+    l && l.removeChild(n);
+  }
 
+  function h(n, l, u) {
+    var t,
+        i,
+        r,
+        o,
+        f = arguments;
+    if (l = s({}, l), arguments.length > 3) for (u = [u], t = 3; t < arguments.length; t++) u.push(f[t]);
+    if (null != u && (l.children = u), null != n && null != n.defaultProps) for (i in n.defaultProps) void 0 === l[i] && (l[i] = n.defaultProps[i]);
+    return o = l.key, null != (r = l.ref) && delete l.ref, null != o && delete l.key, v(n, l, o, r);
+  }
 
-function createCommonjsModule(fn, module) {
-	return module = { exports: {} }, fn(module, module.exports), module.exports;
-}
+  function v(l, u, t, i) {
+    var r = {
+      type: l,
+      props: u,
+      key: t,
+      ref: i,
+      __k: null,
+      __p: null,
+      __b: 0,
+      __e: null,
+      l: null,
+      __c: null,
+      constructor: void 0
+    };
+    return n.vnode && n.vnode(r), r;
+  }
 
-var preact = createCommonjsModule(function (module, exports) {
-!function (global, factory) {
-    factory(exports);
-}(commonjsGlobal, function (exports) {
-    function VNode(nodeName, attributes, children) {
-        this.nodeName = nodeName;
-        this.attributes = attributes;
-        this.children = children;
-        this.key = attributes && attributes.key;
+  function p() {
+    return {};
+  }
+
+  function d(n) {
+    return n.children;
+  }
+
+  function y(n) {
+    if (null == n || "boolean" == typeof n) return null;
+    if ("string" == typeof n || "number" == typeof n) return v(null, n, null, null);
+
+    if (null != n.__e || null != n.__c) {
+      var l = v(n.type, n.props, n.key, null);
+      return l.__e = n.__e, l;
     }
-    function h(nodeName, attributes) {
-        var children, lastSimple, child, simple, i;
-        for (i = arguments.length; i-- > 2;) stack.push(arguments[i]);
-        if (attributes && attributes.children) {
-            if (!stack.length) stack.push(attributes.children);
-            delete attributes.children;
-        }
-        while (stack.length) if ((child = stack.pop()) instanceof Array) for (i = child.length; i--;) stack.push(child[i]);else if (null != child && child !== !0 && child !== !1) {
-            if ('number' == typeof child) child = String(child);
-            simple = 'string' == typeof child;
-            if (simple && lastSimple) children[children.length - 1] += child;else {
-                (children || (children = [])).push(child);
-                lastSimple = simple;
-            }
-        }
-        var p = new VNode(nodeName, attributes || void 0, children || EMPTY_CHILDREN);
-        if (options.vnode) options.vnode(p);
-        return p;
+
+    return n;
+  }
+
+  function m(n, l) {
+    this.props = n, this.context = l;
+  }
+
+  function w(n, l) {
+    if (null == l) return n.__p ? w(n.__p, n.__p.__k.indexOf(n) + 1) : null;
+
+    for (var u; l < n.__k.length; l++) if (null != (u = n.__k[l]) && null != u.__e) return u.__e;
+
+    return "function" == typeof n.type ? w(n) : null;
+  }
+
+  function g(n) {
+    var l, u;
+
+    if (null != (n = n.__p) && null != n.__c) {
+      for (n.__e = n.__c.base = null, l = 0; l < n.__k.length; l++) if (null != (u = n.__k[l]) && null != u.__e) {
+        n.__e = n.__c.base = u.__e;
+        break;
+      }
+
+      return g(n);
     }
-    function extend(obj, props) {
-        if (props) for (var i in props) obj[i] = props[i];
-        return obj;
-    }
-    function clone(obj) {
-        return extend({}, obj);
-    }
-    function delve(obj, key) {
-        for (var p = key.split('.'), i = 0; i < p.length && obj; i++) obj = obj[p[i]];
-        return obj;
-    }
-    function isFunction(obj) {
-        return 'function' == typeof obj;
-    }
-    function isString(obj) {
-        return 'string' == typeof obj;
-    }
-    function hashToClassName(c) {
-        var str = '';
-        for (var prop in c) if (c[prop]) {
-            if (str) str += ' ';
-            str += prop;
-        }
-        return str;
-    }
-    function cloneElement(vnode, props) {
-        return h(vnode.nodeName, extend(clone(vnode.attributes), props), arguments.length > 2 ? [].slice.call(arguments, 2) : vnode.children);
-    }
-    function createLinkedState(component, key, eventPath) {
-        var path = key.split('.');
-        return function (e) {
-            var t = e && e.target || this,
-                state = {},
-                obj = state,
-                v = isString(eventPath) ? delve(e, eventPath) : t.nodeName ? t.type.match(/^che|rad/) ? t.checked : t.value : e,
-                i = 0;
-            for (; i < path.length - 1; i++) obj = obj[path[i]] || (obj[path[i]] = !i && component.state[path[i]] || {});
-            obj[path[i]] = v;
-            component.setState(state);
-        };
-    }
-    function enqueueRender(component) {
-        if (!component._dirty && (component._dirty = !0) && 1 == items.push(component)) (options.debounceRendering || defer)(rerender);
-    }
-    function rerender() {
-        var p,
-            list = items;
-        items = [];
-        while (p = list.pop()) if (p._dirty) renderComponent(p);
-    }
-    function isFunctionalComponent(vnode) {
-        var nodeName = vnode && vnode.nodeName;
-        return nodeName && isFunction(nodeName) && !(nodeName.prototype && nodeName.prototype.render);
-    }
-    function buildFunctionalComponent(vnode, context) {
-        return vnode.nodeName(getNodeProps(vnode), context || EMPTY);
-    }
-    function isSameNodeType(node, vnode) {
-        if (isString(vnode)) return node instanceof Text;
-        if (isString(vnode.nodeName)) return !node._componentConstructor && isNamedNode(node, vnode.nodeName);
-        if (isFunction(vnode.nodeName)) return (node._componentConstructor ? node._componentConstructor === vnode.nodeName : !0) || isFunctionalComponent(vnode);else return;
-    }
-    function isNamedNode(node, nodeName) {
-        return node.normalizedNodeName === nodeName || toLowerCase(node.nodeName) === toLowerCase(nodeName);
-    }
-    function getNodeProps(vnode) {
-        var props = clone(vnode.attributes);
-        props.children = vnode.children;
-        var defaultProps = vnode.nodeName.defaultProps;
-        if (defaultProps) for (var i in defaultProps) if (void 0 === props[i]) props[i] = defaultProps[i];
-        return props;
-    }
-    function removeNode(node) {
-        var p = node.parentNode;
-        if (p) p.removeChild(node);
-    }
-    function setAccessor(node, name, old, value, isSvg) {
-        if ('className' === name) name = 'class';
-        if ('class' === name && value && 'object' == typeof value) value = hashToClassName(value);
-        if ('key' === name) ;else if ('class' === name && !isSvg) node.className = value || '';else if ('style' === name) {
-            if (!value || isString(value) || isString(old)) node.style.cssText = value || '';
-            if (value && 'object' == typeof value) {
-                if (!isString(old)) for (var i in old) if (!(i in value)) node.style[i] = '';
-                for (var i in value) node.style[i] = 'number' == typeof value[i] && !NON_DIMENSION_PROPS[i] ? value[i] + 'px' : value[i];
-            }
-        } else if ('dangerouslySetInnerHTML' === name) {
-            if (value) node.innerHTML = value.__html || '';
-        } else if ('o' == name[0] && 'n' == name[1]) {
-            var l = node._listeners || (node._listeners = {});
-            name = toLowerCase(name.substring(2));
-            if (value) {
-                if (!l[name]) node.addEventListener(name, eventProxy, !!NON_BUBBLING_EVENTS[name]);
-            } else if (l[name]) node.removeEventListener(name, eventProxy, !!NON_BUBBLING_EVENTS[name]);
-            l[name] = value;
-        } else if ('list' !== name && 'type' !== name && !isSvg && name in node) {
-            setProperty(node, name, null == value ? '' : value);
-            if (null == value || value === !1) node.removeAttribute(name);
-        } else {
-            var ns = isSvg && name.match(/^xlink\:?(.+)/);
-            if (null == value || value === !1) {
-                if (ns) node.removeAttributeNS('http://www.w3.org/1999/xlink', toLowerCase(ns[1]));else node.removeAttribute(name);
-            } else if ('object' != typeof value && !isFunction(value)) if (ns) node.setAttributeNS('http://www.w3.org/1999/xlink', toLowerCase(ns[1]), value);else node.setAttribute(name, value);
-        }
-    }
-    function setProperty(node, name, value) {
-        try {
-            node[name] = value;
-        } catch (e) {}
-    }
-    function eventProxy(e) {
-        return this._listeners[e.type](options.event && options.event(e) || e);
-    }
-    function collectNode(node) {
-        removeNode(node);
-        if (node instanceof Element) {
-            node._component = node._componentConstructor = null;
-            var _name = node.normalizedNodeName || toLowerCase(node.nodeName);
-            (nodes[_name] || (nodes[_name] = [])).push(node);
-        }
-    }
-    function createNode(nodeName, isSvg) {
-        var name = toLowerCase(nodeName),
-            node = nodes[name] && nodes[name].pop() || (isSvg ? document.createElementNS('http://www.w3.org/2000/svg', nodeName) : document.createElement(nodeName));
-        node.normalizedNodeName = name;
-        return node;
-    }
-    function flushMounts() {
-        var c;
-        while (c = mounts.pop()) {
-            if (options.afterMount) options.afterMount(c);
-            if (c.componentDidMount) c.componentDidMount();
-        }
-    }
-    function diff(dom, vnode, context, mountAll, parent, componentRoot) {
-        if (!diffLevel++) {
-            isSvgMode = parent && void 0 !== parent.ownerSVGElement;
-            hydrating = dom && !(ATTR_KEY in dom);
-        }
-        var ret = idiff(dom, vnode, context, mountAll);
-        if (parent && ret.parentNode !== parent) parent.appendChild(ret);
-        if (! --diffLevel) {
-            hydrating = !1;
-            if (!componentRoot) flushMounts();
-        }
-        return ret;
-    }
-    function idiff(dom, vnode, context, mountAll) {
-        var ref = vnode && vnode.attributes && vnode.attributes.ref;
-        while (isFunctionalComponent(vnode)) vnode = buildFunctionalComponent(vnode, context);
-        if (null == vnode) vnode = '';
-        if (isString(vnode)) {
-            if (dom && dom instanceof Text && dom.parentNode) {
-                if (dom.nodeValue != vnode) dom.nodeValue = vnode;
-            } else {
-                if (dom) recollectNodeTree(dom);
-                dom = document.createTextNode(vnode);
-            }
-            return dom;
-        }
-        if (isFunction(vnode.nodeName)) return buildComponentFromVNode(dom, vnode, context, mountAll);
-        var out = dom,
-            nodeName = String(vnode.nodeName),
-            prevSvgMode = isSvgMode,
-            vchildren = vnode.children;
-        isSvgMode = 'svg' === nodeName ? !0 : 'foreignObject' === nodeName ? !1 : isSvgMode;
-        if (!dom) out = createNode(nodeName, isSvgMode);else if (!isNamedNode(dom, nodeName)) {
-            out = createNode(nodeName, isSvgMode);
-            while (dom.firstChild) out.appendChild(dom.firstChild);
-            if (dom.parentNode) dom.parentNode.replaceChild(out, dom);
-            recollectNodeTree(dom);
-        }
-        var fc = out.firstChild,
-            props = out[ATTR_KEY];
-        if (!props) {
-            out[ATTR_KEY] = props = {};
-            for (var a = out.attributes, i = a.length; i--;) props[a[i].name] = a[i].value;
-        }
-        if (!hydrating && vchildren && 1 === vchildren.length && 'string' == typeof vchildren[0] && fc && fc instanceof Text && !fc.nextSibling) {
-            if (fc.nodeValue != vchildren[0]) fc.nodeValue = vchildren[0];
-        } else if (vchildren && vchildren.length || fc) innerDiffNode(out, vchildren, context, mountAll, !!props.dangerouslySetInnerHTML);
-        diffAttributes(out, vnode.attributes, props);
-        if (ref) (props.ref = ref)(out);
-        isSvgMode = prevSvgMode;
-        return out;
-    }
-    function innerDiffNode(dom, vchildren, context, mountAll, absorb) {
-        var j,
-            c,
-            vchild,
-            child,
-            originalChildren = dom.childNodes,
-            children = [],
-            keyed = {},
-            keyedLen = 0,
-            min = 0,
-            len = originalChildren.length,
-            childrenLen = 0,
-            vlen = vchildren && vchildren.length;
-        if (len) for (var i = 0; i < len; i++) {
-            var _child = originalChildren[i],
-                props = _child[ATTR_KEY],
-                key = vlen ? (c = _child._component) ? c.__key : props ? props.key : null : null;
-            if (null != key) {
-                keyedLen++;
-                keyed[key] = _child;
-            } else if (hydrating || absorb || props || _child instanceof Text) children[childrenLen++] = _child;
-        }
-        if (vlen) for (var i = 0; i < vlen; i++) {
-            vchild = vchildren[i];
-            child = null;
-            var key = vchild.key;
-            if (null != key) {
-                if (keyedLen && key in keyed) {
-                    child = keyed[key];
-                    keyed[key] = void 0;
-                    keyedLen--;
-                }
-            } else if (!child && min < childrenLen) for (j = min; j < childrenLen; j++) {
-                c = children[j];
-                if (c && isSameNodeType(c, vchild)) {
-                    child = c;
-                    children[j] = void 0;
-                    if (j === childrenLen - 1) childrenLen--;
-                    if (j === min) min++;
-                    break;
-                }
-            }
-            child = idiff(child, vchild, context, mountAll);
-            if (child && child !== dom) if (i >= len) dom.appendChild(child);else if (child !== originalChildren[i]) {
-                if (child === originalChildren[i + 1]) removeNode(originalChildren[i]);
-                dom.insertBefore(child, originalChildren[i] || null);
-            }
-        }
-        if (keyedLen) for (var i in keyed) if (keyed[i]) recollectNodeTree(keyed[i]);
-        while (min <= childrenLen) {
-            child = children[childrenLen--];
-            if (child) recollectNodeTree(child);
-        }
-    }
-    function recollectNodeTree(node, unmountOnly) {
-        var component = node._component;
-        if (component) unmountComponent(component, !unmountOnly);else {
-            if (node[ATTR_KEY] && node[ATTR_KEY].ref) node[ATTR_KEY].ref(null);
-            if (!unmountOnly) collectNode(node);
-            var c;
-            while (c = node.lastChild) recollectNodeTree(c, unmountOnly);
-        }
-    }
-    function diffAttributes(dom, attrs, old) {
-        var name;
-        for (name in old) if (!(attrs && name in attrs) && null != old[name]) setAccessor(dom, name, old[name], old[name] = void 0, isSvgMode);
-        if (attrs) for (name in attrs) if (!('children' === name || 'innerHTML' === name || name in old && attrs[name] === ('value' === name || 'checked' === name ? dom[name] : old[name]))) setAccessor(dom, name, old[name], old[name] = attrs[name], isSvgMode);
-    }
-    function collectComponent(component) {
-        var name = component.constructor.name,
-            list = components[name];
-        if (list) list.push(component);else components[name] = [component];
-    }
-    function createComponent(Ctor, props, context) {
-        var inst = new Ctor(props, context),
-            list = components[Ctor.name];
-        Component.call(inst, props, context);
-        if (list) for (var i = list.length; i--;) if (list[i].constructor === Ctor) {
-            inst.nextBase = list[i].nextBase;
-            list.splice(i, 1);
+  }
+
+  function k(l) {
+    (!l.__d && (l.__d = !0) && 1 === u.push(l) || i !== n.debounceRendering) && (i = n.debounceRendering, (n.debounceRendering || t)(_));
+  }
+
+  function _() {
+    var n, l, t, i, r, o, f;
+
+    for (u.sort(function (n, l) {
+      return l.__v.__b - n.__v.__b;
+    }); n = u.pop();) n.__d && (t = void 0, i = void 0, o = (r = (l = n).__v).__e, (f = l.__P) && (t = [], i = $(f, r, s({}, r), l.__n, void 0 !== f.ownerSVGElement, null, t, null == o ? w(r) : o), j(t, r), i != o && g(r)));
+  }
+
+  function b(n, l, u, t, i, r, o, c, s) {
+    var h,
+        v,
+        p,
+        d,
+        y,
+        m,
+        g,
+        k = u && u.__k || e,
+        _ = k.length;
+    if (c == f && (c = null != r ? r[0] : _ ? w(u, 0) : null), h = 0, l.__k = x(l.__k, function (u) {
+      if (null != u) {
+        if (u.__p = l, u.__b = l.__b + 1, null === (p = k[h]) || p && u.key == p.key && u.type === p.type) k[h] = void 0;else for (v = 0; v < _; v++) {
+          if ((p = k[v]) && u.key == p.key && u.type === p.type) {
+            k[v] = void 0;
             break;
+          }
+
+          p = null;
         }
-        return inst;
-    }
-    function setComponentProps(component, props, opts, context, mountAll) {
-        if (!component._disable) {
-            component._disable = !0;
-            if (component.__ref = props.ref) delete props.ref;
-            if (component.__key = props.key) delete props.key;
-            if (!component.base || mountAll) {
-                if (component.componentWillMount) component.componentWillMount();
-            } else if (component.componentWillReceiveProps) component.componentWillReceiveProps(props, context);
-            if (context && context !== component.context) {
-                if (!component.prevContext) component.prevContext = component.context;
-                component.context = context;
+
+        if (d = $(n, u, p = p || f, t, i, r, o, c, s), (v = u.ref) && p.ref != v && (g || (g = [])).push(v, u.__c || d, u), null != d) {
+          if (null == m && (m = d), null != u.l) d = u.l, u.l = null;else if (r == p || d != c || null == d.parentNode) {
+            n: if (null == c || c.parentNode !== n) n.appendChild(d);else {
+              for (y = c, v = 0; (y = y.nextSibling) && v < _; v += 2) if (y == d) break n;
+
+              n.insertBefore(d, c);
             }
-            if (!component.prevProps) component.prevProps = component.props;
-            component.props = props;
-            component._disable = !1;
-            if (0 !== opts) if (1 === opts || options.syncComponentUpdates !== !1 || !component.base) renderComponent(component, 1, mountAll);else enqueueRender(component);
-            if (component.__ref) component.__ref(component);
+
+            "option" == l.type && (n.value = "");
+          }
+          c = d.nextSibling, "function" == typeof l.type && (l.l = d);
         }
-    }
-    function renderComponent(component, opts, mountAll, isChild) {
-        if (!component._disable) {
-            var skip,
-                rendered,
-                inst,
-                cbase,
-                props = component.props,
-                state = component.state,
-                context = component.context,
-                previousProps = component.prevProps || props,
-                previousState = component.prevState || state,
-                previousContext = component.prevContext || context,
-                isUpdate = component.base,
-                nextBase = component.nextBase,
-                initialBase = isUpdate || nextBase,
-                initialChildComponent = component._component;
-            if (isUpdate) {
-                component.props = previousProps;
-                component.state = previousState;
-                component.context = previousContext;
-                if (2 !== opts && component.shouldComponentUpdate && component.shouldComponentUpdate(props, state, context) === !1) skip = !0;else if (component.componentWillUpdate) component.componentWillUpdate(props, state, context);
-                component.props = props;
-                component.state = state;
-                component.context = context;
-            }
-            component.prevProps = component.prevState = component.prevContext = component.nextBase = null;
-            component._dirty = !1;
-            if (!skip) {
-                if (component.render) rendered = component.render(props, state, context);
-                if (component.getChildContext) context = extend(clone(context), component.getChildContext());
-                while (isFunctionalComponent(rendered)) rendered = buildFunctionalComponent(rendered, context);
-                var toUnmount,
-                    base,
-                    childComponent = rendered && rendered.nodeName;
-                if (isFunction(childComponent)) {
-                    var childProps = getNodeProps(rendered);
-                    inst = initialChildComponent;
-                    if (inst && inst.constructor === childComponent && childProps.key == inst.__key) setComponentProps(inst, childProps, 1, context);else {
-                        toUnmount = inst;
-                        inst = createComponent(childComponent, childProps, context);
-                        inst.nextBase = inst.nextBase || nextBase;
-                        inst._parentComponent = component;
-                        component._component = inst;
-                        setComponentProps(inst, childProps, 0, context);
-                        renderComponent(inst, 1, mountAll, !0);
-                    }
-                    base = inst.base;
-                } else {
-                    cbase = initialBase;
-                    toUnmount = initialChildComponent;
-                    if (toUnmount) cbase = component._component = null;
-                    if (initialBase || 1 === opts) {
-                        if (cbase) cbase._component = null;
-                        base = diff(cbase, rendered, context, mountAll || !isUpdate, initialBase && initialBase.parentNode, !0);
-                    }
-                }
-                if (initialBase && base !== initialBase && inst !== initialChildComponent) {
-                    var baseParent = initialBase.parentNode;
-                    if (baseParent && base !== baseParent) {
-                        baseParent.replaceChild(base, initialBase);
-                        if (!toUnmount) {
-                            initialBase._component = null;
-                            recollectNodeTree(initialBase);
-                        }
-                    }
-                }
-                if (toUnmount) unmountComponent(toUnmount, base !== initialBase);
-                component.base = base;
-                if (base && !isChild) {
-                    var componentRef = component,
-                        t = component;
-                    while (t = t._parentComponent) (componentRef = t).base = base;
-                    base._component = componentRef;
-                    base._componentConstructor = componentRef.constructor;
-                }
-            }
-            if (!isUpdate || mountAll) mounts.unshift(component);else if (!skip) {
-                if (component.componentDidUpdate) component.componentDidUpdate(previousProps, previousState, previousContext);
-                if (options.afterUpdate) options.afterUpdate(component);
-            }
-            var fn,
-                cb = component._renderCallbacks;
-            if (cb) while (fn = cb.pop()) fn.call(component);
-            if (!diffLevel && !isChild) flushMounts();
+      }
+
+      return h++, u;
+    }), l.__e = m, null != r && "function" != typeof l.type) for (h = r.length; h--;) null != r[h] && a(r[h]);
+
+    for (h = _; h--;) null != k[h] && D(k[h], k[h]);
+
+    if (g) for (h = 0; h < g.length; h++) A(g[h], g[++h], g[++h]);
+  }
+
+  function x(n, l, u) {
+    if (null == u && (u = []), null == n || "boolean" == typeof n) l && u.push(l(null));else if (Array.isArray(n)) for (var t = 0; t < n.length; t++) x(n[t], l, u);else u.push(l ? l(y(n)) : n);
+    return u;
+  }
+
+  function C(n, l, u, t, i) {
+    var r;
+
+    for (r in u) r in l || N(n, r, null, u[r], t);
+
+    for (r in l) i && "function" != typeof l[r] || "value" === r || "checked" === r || u[r] === l[r] || N(n, r, l[r], u[r], t);
+  }
+
+  function P(n, l, u) {
+    "-" === l[0] ? n.setProperty(l, u) : n[l] = "number" == typeof u && !1 === c.test(l) ? u + "px" : null == u ? "" : u;
+  }
+
+  function N(n, l, u, t, i) {
+    var r, o, f, e, c;
+    if ("key" === (l = i ? "className" === l ? "class" : l : "class" === l ? "className" : l) || "children" === l) ;else if ("style" === l) {
+      if (r = n.style, "string" == typeof u) r.cssText = u;else {
+        if ("string" == typeof t && (r.cssText = "", t = null), t) for (o in t) u && o in u || P(r, o, "");
+        if (u) for (f in u) t && u[f] === t[f] || P(r, f, u[f]);
+      }
+    } else "o" === l[0] && "n" === l[1] ? (e = l !== (l = l.replace(/Capture$/, "")), c = l.toLowerCase(), l = (c in n ? c : l).slice(2), u ? (t || n.addEventListener(l, T, e), (n.u || (n.u = {}))[l] = u) : n.removeEventListener(l, T, e)) : "list" !== l && "tagName" !== l && "form" !== l && !i && l in n ? n[l] = null == u ? "" : u : "function" != typeof u && "dangerouslySetInnerHTML" !== l && (l !== (l = l.replace(/^xlink:?/, "")) ? null == u || !1 === u ? n.removeAttributeNS("http://www.w3.org/1999/xlink", l.toLowerCase()) : n.setAttributeNS("http://www.w3.org/1999/xlink", l.toLowerCase(), u) : null == u || !1 === u ? n.removeAttribute(l) : n.setAttribute(l, u));
+  }
+
+  function T(l) {
+    return this.u[l.type](n.event ? n.event(l) : l);
+  }
+
+  function $(l, u, t, i, r, o, f, e, c) {
+    var a,
+        h,
+        v,
+        p,
+        y,
+        w,
+        g,
+        k,
+        _,
+        C,
+        P = u.type;
+
+    if (void 0 !== u.constructor) return null;
+    (a = n.__b) && a(u);
+
+    try {
+      n: if ("function" == typeof P) {
+        if (k = u.props, _ = (a = P.contextType) && i[a.__c], C = a ? _ ? _.props.value : a.__p : i, t.__c ? g = (h = u.__c = t.__c).__p = h.__E : ("prototype" in P && P.prototype.render ? u.__c = h = new P(k, C) : (u.__c = h = new m(k, C), h.constructor = P, h.render = H), _ && _.sub(h), h.props = k, h.state || (h.state = {}), h.context = C, h.__n = i, v = h.__d = !0, h.__h = []), null == h.__s && (h.__s = h.state), null != P.getDerivedStateFromProps && s(h.__s == h.state ? h.__s = s({}, h.__s) : h.__s, P.getDerivedStateFromProps(k, h.__s)), v) null == P.getDerivedStateFromProps && null != h.componentWillMount && h.componentWillMount(), null != h.componentDidMount && f.push(h);else {
+          if (null == P.getDerivedStateFromProps && null == h.t && null != h.componentWillReceiveProps && h.componentWillReceiveProps(k, C), !h.t && null != h.shouldComponentUpdate && !1 === h.shouldComponentUpdate(k, h.__s, C)) {
+            for (h.props = k, h.state = h.__s, h.__d = !1, h.__v = u, u.__e = t.__e, u.__k = t.__k, a = 0; a < u.__k.length; a++) u.__k[a] && (u.__k[a].__p = u);
+
+            break n;
+          }
+
+          null != h.componentWillUpdate && h.componentWillUpdate(k, h.__s, C);
         }
+        p = h.props, y = h.state, h.context = C, h.props = k, h.state = h.__s, (a = n.__r) && a(u), h.__d = !1, h.__v = u, h.__P = l, a = h.render(h.props, h.state, h.context), u.__k = x(null != a && a.type == d && null == a.key ? a.props.children : a), null != h.getChildContext && (i = s(s({}, i), h.getChildContext())), v || null == h.getSnapshotBeforeUpdate || (w = h.getSnapshotBeforeUpdate(p, y)), b(l, u, t, i, r, o, f, e, c), h.base = u.__e, a = h.__h, h.__h = [], a.some(function (n) {
+          n.call(h);
+        }), v || null == p || null == h.componentDidUpdate || h.componentDidUpdate(p, y, w), g && (h.__E = h.__p = null), h.t = null;
+      } else u.__e = z(t.__e, u, t, i, r, o, f, c);
+
+      (a = n.diffed) && a(u);
+    } catch (l) {
+      n.__e(l, u, t);
     }
-    function buildComponentFromVNode(dom, vnode, context, mountAll) {
-        var c = dom && dom._component,
-            originalComponent = c,
-            oldDom = dom,
-            isDirectOwner = c && dom._componentConstructor === vnode.nodeName,
-            isOwner = isDirectOwner,
-            props = getNodeProps(vnode);
-        while (c && !isOwner && (c = c._parentComponent)) isOwner = c.constructor === vnode.nodeName;
-        if (c && isOwner && (!mountAll || c._component)) {
-            setComponentProps(c, props, 3, context, mountAll);
-            dom = c.base;
-        } else {
-            if (originalComponent && !isDirectOwner) {
-                unmountComponent(originalComponent, !0);
-                dom = oldDom = null;
-            }
-            c = createComponent(vnode.nodeName, props, context);
-            if (dom && !c.nextBase) {
-                c.nextBase = dom;
-                oldDom = null;
-            }
-            setComponentProps(c, props, 1, context, mountAll);
-            dom = c.base;
-            if (oldDom && dom !== oldDom) {
-                oldDom._component = null;
-                recollectNodeTree(oldDom);
-            }
-        }
-        return dom;
+
+    return u.__e;
+  }
+
+  function j(l, u) {
+    for (var t; t = l.pop();) try {
+      t.componentDidMount();
+    } catch (l) {
+      n.__e(l, t.__v);
     }
-    function unmountComponent(component, remove) {
-        if (options.beforeUnmount) options.beforeUnmount(component);
-        var base = component.base;
-        component._disable = !0;
-        if (component.componentWillUnmount) component.componentWillUnmount();
-        component.base = null;
-        var inner = component._component;
-        if (inner) unmountComponent(inner, remove);else if (base) {
-            if (base[ATTR_KEY] && base[ATTR_KEY].ref) base[ATTR_KEY].ref(null);
-            component.nextBase = base;
-            if (remove) {
-                removeNode(base);
-                collectComponent(component);
-            }
-            var c;
-            while (c = base.lastChild) recollectNodeTree(c, !remove);
-        }
-        if (component.__ref) component.__ref(null);
-        if (component.componentDidUnmount) component.componentDidUnmount();
+
+    n.__c && n.__c(u);
+  }
+
+  function z(n, l, u, t, i, r, o, c) {
+    var s,
+        a,
+        h,
+        v,
+        p,
+        d = u.props,
+        y = l.props;
+    if (i = "svg" === l.type || i, null == n && null != r) for (s = 0; s < r.length; s++) if (null != (a = r[s]) && (null === l.type ? 3 === a.nodeType : a.localName === l.type)) {
+      n = a, r[s] = null;
+      break;
     }
-    function Component(props, context) {
-        this._dirty = !0;
-        this.context = context;
-        this.props = props;
-        if (!this.state) this.state = {};
+
+    if (null == n) {
+      if (null === l.type) return document.createTextNode(y);
+      n = i ? document.createElementNS("http://www.w3.org/2000/svg", l.type) : document.createElement(l.type), r = null;
     }
-    function render(vnode, parent, merge) {
-        return diff(merge, vnode, {}, !1, parent);
+
+    if (null === l.type) null != r && (r[r.indexOf(n)] = null), d !== y && (n.data = y);else if (l !== u) {
+      if (null != r && (r = e.slice.call(n.childNodes)), h = (d = u.props || f).dangerouslySetInnerHTML, v = y.dangerouslySetInnerHTML, !c) {
+        if (d === f) for (d = {}, p = 0; p < n.attributes.length; p++) d[n.attributes[p].name] = n.attributes[p].value;
+        (v || h) && (v && h && v.__html == h.__html || (n.innerHTML = v && v.__html || ""));
+      }
+
+      C(n, y, d, i, c), l.__k = l.props.children, v || b(n, l, u, t, "foreignObject" !== l.type && i, r, o, f, c), c || ("value" in y && void 0 !== y.value && y.value !== n.value && (n.value = null == y.value ? "" : y.value), "checked" in y && void 0 !== y.checked && y.checked !== n.checked && (n.checked = y.checked));
     }
-    var options = {};
-    var stack = [];
-    var EMPTY_CHILDREN = [];
-    var lcCache = {};
-    var toLowerCase = function (s) {
-        return lcCache[s] || (lcCache[s] = s.toLowerCase());
+    return n;
+  }
+
+  function A(l, u, t) {
+    try {
+      "function" == typeof l ? l(u) : l.current = u;
+    } catch (l) {
+      n.__e(l, t);
+    }
+  }
+
+  function D(l, u, t) {
+    var i, r, o;
+
+    if (n.unmount && n.unmount(l), (i = l.ref) && A(i, null, u), t || "function" == typeof l.type || (t = null != (r = l.__e)), l.__e = l.l = null, null != (i = l.__c)) {
+      if (i.componentWillUnmount) try {
+        i.componentWillUnmount();
+      } catch (l) {
+        n.__e(l, u);
+      }
+      i.base = i.__P = null;
+    }
+
+    if (i = l.__k) for (o = 0; o < i.length; o++) i[o] && D(i[o], u, t);
+    null != r && a(r);
+  }
+
+  function H(n, l, u) {
+    return this.constructor(n, u);
+  }
+
+  function I(l, u, t) {
+    var i, o, c;
+    n.__p && n.__p(l, u), o = (i = t === r) ? null : t && t.__k || u.__k, l = h(d, null, [l]), c = [], $(u, i ? u.__k = l : (t || u).__k = l, o || f, f, void 0 !== u.ownerSVGElement, t && !i ? [t] : o ? null : e.slice.call(u.childNodes), c, t || f, i), j(c, l);
+  }
+
+  function L(n, l) {
+    I(n, l, r);
+  }
+
+  function M(n, l) {
+    return l = s(s({}, n.props), l), arguments.length > 2 && (l.children = e.slice.call(arguments, 2)), v(n.type, l, l.key || n.key, l.ref || n.ref);
+  }
+
+  function O(n) {
+    var l = {},
+        u = {
+      __c: "__cC" + o++,
+      __p: n,
+      Consumer: function (n, l) {
+        return n.children(l);
+      },
+      Provider: function (n) {
+        var t,
+            i = this;
+        return this.getChildContext || (t = [], this.getChildContext = function () {
+          return l[u.__c] = i, l;
+        }, this.shouldComponentUpdate = function (l) {
+          n.value !== l.value && t.some(function (n) {
+            n.__P && (n.context = l.value, k(n));
+          });
+        }, this.sub = function (n) {
+          t.push(n);
+          var l = n.componentWillUnmount;
+
+          n.componentWillUnmount = function () {
+            t.splice(t.indexOf(n), 1), l && l.call(n);
+          };
+        }), n.children;
+      }
     };
-    var resolved = 'undefined' != typeof Promise && Promise.resolve();
-    var defer = resolved ? function (f) {
-        resolved.then(f);
-    } : setTimeout;
-    var EMPTY = {};
-    var ATTR_KEY = 'undefined' != typeof Symbol ? Symbol.for('preactattr') : '__preactattr_';
-    var NON_DIMENSION_PROPS = {
-        boxFlex: 1,
-        boxFlexGroup: 1,
-        columnCount: 1,
-        fillOpacity: 1,
-        flex: 1,
-        flexGrow: 1,
-        flexPositive: 1,
-        flexShrink: 1,
-        flexNegative: 1,
-        fontWeight: 1,
-        lineClamp: 1,
-        lineHeight: 1,
-        opacity: 1,
-        order: 1,
-        orphans: 1,
-        strokeOpacity: 1,
-        widows: 1,
-        zIndex: 1,
-        zoom: 1
-    };
-    var NON_BUBBLING_EVENTS = {
-        blur: 1,
-        error: 1,
-        focus: 1,
-        load: 1,
-        resize: 1,
-        scroll: 1
-    };
-    var items = [];
-    var nodes = {};
-    var mounts = [];
-    var diffLevel = 0;
-    var isSvgMode = !1;
-    var hydrating = !1;
-    var components = {};
-    extend(Component.prototype, {
-        linkState: function (key, eventPath) {
-            var c = this._linkedStates || (this._linkedStates = {});
-            return c[key + eventPath] || (c[key + eventPath] = createLinkedState(this, key, eventPath));
-        },
-        setState: function (state, callback) {
-            var s = this.state;
-            if (!this.prevState) this.prevState = clone(s);
-            extend(s, isFunction(state) ? state(s, this.props) : state);
-            if (callback) (this._renderCallbacks = this._renderCallbacks || []).push(callback);
-            enqueueRender(this);
-        },
-        forceUpdate: function () {
-            renderComponent(this, 2);
-        },
-        render: function () {}
-    });
-    exports.h = h;
-    exports.cloneElement = cloneElement;
-    exports.Component = Component;
-    exports.render = render;
-    exports.rerender = rerender;
-    exports.options = options;
-});
-});
+    return u.Consumer.contextType = u, u;
+  }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+  n = {}, l = function (n) {
+    return null != n && void 0 === n.constructor;
+  }, m.prototype.setState = function (n, l) {
+    var u = this.__s !== this.state && this.__s || (this.__s = s({}, this.state));
+    ("function" != typeof n || (n = n(u, this.props))) && s(u, n), null != n && this.__v && (this.t = !1, l && this.__h.push(l), k(this));
+  }, m.prototype.forceUpdate = function (n) {
+    this.__v && (this.t = !0, n && this.__h.push(n), k(this));
+  }, m.prototype.render = d, u = [], t = "function" == typeof Promise ? Promise.prototype.then.bind(Promise.resolve()) : setTimeout, i = n.debounceRendering, n.__e = function (n, l, u) {
+    for (var t; l = l.__p;) if ((t = l.__c) && !t.__p) try {
+      if (t.constructor && null != t.constructor.getDerivedStateFromError) t.setState(t.constructor.getDerivedStateFromError(n));else {
+        if (null == t.componentDidCatch) continue;
+        t.componentDidCatch(n);
+      }
+      return k(t.__E = t);
+    } catch (l) {
+      n = l;
+    }
 
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+    throw n;
+  }, r = f, o = 0;
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+  var preact_module = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    render: I,
+    hydrate: L,
+    createElement: h,
+    h: h,
+    Fragment: d,
+    createRef: p,
+    get isValidElement () { return l; },
+    Component: m,
+    cloneElement: M,
+    createContext: O,
+    toChildArray: x,
+    _unmount: D,
+    get options () { return n; }
+  });
 
+  var App = class extends preact_module.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        selectedColorIndex: 0
+      };
+    }
 
-var h$1 = preact.h;
-var Component = preact.Component;
+    componentDidMount() {
+      if (this.props.onMount) {
+        this.props.onMount(this);
+      }
 
-var App = function (_Component) {
-    _inherits(_class, _Component);
+      window.onMount();
+    }
 
-    function _class(props) {
-        _classCallCheck(this, _class);
+    componentDidUpdate() {
+      if (this.props.onUpdate) {
+        this.props.onUpdate(this);
+      }
+    }
 
-        var _this = _possibleConstructorReturn(this, _Component.call(this, props));
+    handleColorClick(colorIndex) {
+      this.setState({
+        selectedColorIndex: colorIndex
+      });
+    }
 
-        _this.state = {
-            selectedColorIndex: 0
+    render() {
+      var colors = this.props.colors;
+      var handleColorClick = this.handleColorClick;
+      var selectedColorIndex = this.state.selectedColorIndex;
+      var selectedColor = colors[selectedColorIndex];
+      var self = this;
+
+      function renderColor(color, i) {
+        var style = {
+          backgroundColor: color.hex
         };
-        return _this;
+        var className = "color";
+
+        if (selectedColorIndex === i) {
+          className += " selected";
+        }
+
+        return preact_module.h("li", {
+          className: className,
+          style: style,
+          onClick: handleColorClick.bind(self, i)
+        }, color.name);
+      }
+
+      function renderColors(colors) {
+        if (colors.length) {
+          return preact_module.h("ul", null, colors.map(function (color, i) {
+            return renderColor(color, i);
+          }));
+        } else {
+          return preact_module.h("div", null, "No colors!");
+        }
+      }
+
+      return preact_module.h("div", {
+        class: "colors"
+      }, preact_module.h("h1", null, "Choose your favorite color:"), preact_module.h("div", {
+        class: "colors"
+      }, renderColors(colors)), preact_module.h("div", null, "You chose:", preact_module.h("div", {
+        class: "chosen-color"
+      }, selectedColor.name)));
     }
 
-    _class.prototype.componentDidMount = function componentDidMount() {
-        if (this.props.onMount) {
-            this.props.onMount(this);
-        }
-        window.onMount();
-    };
+  };
 
-    _class.prototype.componentDidUpdate = function componentDidUpdate() {
-        if (this.props.onUpdate) {
-            this.props.onUpdate(this);
-        }
-    };
+  const mountNode = document.getElementById("mount");
 
-    _class.prototype.handleColorClick = function handleColorClick(colorIndex) {
-        this.setState({
-            selectedColorIndex: colorIndex
-        });
-    };
+  if (window.colors) {
+    preact_module.render(preact_module.h(App, {
+      colors: window.colors
+    }), mountNode, mountNode.firstChild);
+    console.log("Re-rendering on client completed");
+  }
 
-    _class.prototype.render = function render() {
-        var colors = this.props.colors;
-        var handleColorClick = this.handleColorClick;
-        var selectedColorIndex = this.state.selectedColorIndex;
-        var selectedColor = colors[selectedColorIndex];
-        var self = this;
-
-        function renderColor(color, i) {
-            var style = {
-                backgroundColor: color.hex
-            };
-
-            var className = 'color';
-            if (selectedColorIndex === i) {
-                className += ' selected';
-            }
-
-            return h$1(
-                'li',
-                { className: className, style: style, onClick: handleColorClick.bind(self, i) },
-                color.name
-            );
-        }
-
-        function renderColors(colors) {
-            if (colors.length) {
-                return h$1(
-                    'ul',
-                    null,
-                    colors.map(function (color, i) {
-                        return renderColor(color, i);
-                    })
-                );
-            } else {
-                return h$1(
-                    'div',
-                    null,
-                    'No colors!'
-                );
-            }
-        }
-
-        return h$1(
-            'div',
-            { 'class': 'colors' },
-            h$1(
-                'h1',
-                null,
-                'Choose your favorite color:'
-            ),
-            h$1(
-                'div',
-                { 'class': 'colors' },
-                renderColors(colors)
-            ),
-            h$1(
-                'div',
-                null,
-                'You chose:',
-                h$1(
-                    'div',
-                    { 'class': 'chosen-color' },
-                    selectedColor.name
-                )
-            )
-        );
-    };
-
-    return _class;
-}(Component);
-
-var h = preact.h;
-var render = preact.render;
-
-
-
-var mountNode = document.getElementById("mount");
-
-if (window.colors) {
-    render(h(App, { colors: window.colors }), mountNode, mountNode.firstChild);
-
-    console.log('Re-rendering on client completed');
-}
-
-window.addBench('preact', function (el, colors) {
+  window.addBench("preact", function (el, colors) {
     var widget;
     var currentDone;
     var selectedColorIndex = 0;
 
     function onMount(instance) {
-        widget = instance;
+      widget = instance;
     }
 
     function onUpdate() {
-        currentDone();
+      currentDone();
     }
 
-    render(h(App, { colors: colors, onMount: onMount, onUpdate: onUpdate }), el);
-
+    preact_module.render(preact_module.h(App, {
+      colors: colors,
+      onMount: onMount,
+      onUpdate: onUpdate
+    }), el);
     return function (done) {
-        widget.setState({
-            selectedColorIndex: ++selectedColorIndex % colors.length
-        });
-
-        currentDone = done;
+      widget.setState({
+        selectedColorIndex: ++selectedColorIndex % colors.length
+      });
+      currentDone = done;
     };
-});
+  });
 
-var client = {
+  var client = {
 
-};
+  };
 
-return client;
+  return client;
 
 }());

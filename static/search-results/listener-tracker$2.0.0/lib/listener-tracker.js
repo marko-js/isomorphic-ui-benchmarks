@@ -8,17 +8,17 @@ function isNonEventEmitter(target) {
 }
 
 function EventEmitterWrapper(target) {
-    this._ = target;
-    this.a = [];
-    this.b = null;
+    this.$__target = target;
+    this.$__listeners = [];
+    this.$__subscribeTo = null;
 }
 
 EventEmitterWrapper.prototype = {
-    c: function(test, testWrapped) {
-        var target = this._;
-        var listeners = this.a;
+    $__remove: function(test, testWrapped) {
+        var target = this.$__target;
+        var listeners = this.$__listeners;
 
-        this.a = listeners.filter(function(curListener) {
+        this.$__listeners = listeners.filter(function(curListener) {
             var curEvent = curListener[INDEX_EVENT];
             var curListenerFunc = curListener[INDEX_USER_LISTENER];
             var curWrappedListenerFunc = curListener[INDEX_WRAPPED_LISTENER];
@@ -51,20 +51,20 @@ EventEmitterWrapper.prototype = {
         // If all of the listeners stored with a wrapped EventEmitter
         // have been removed then we should unregister the wrapped
         // EventEmitter in the parent SubscriptionTracker
-        var subscribeTo = this.b;
+        var subscribeTo = this.$__subscribeTo;
 
-        if (!this.a.length && subscribeTo) {
+        if (!this.$__listeners.length && subscribeTo) {
             var self = this;
-            var subscribeToList = subscribeTo.d;
-            subscribeTo.d = subscribeToList.filter(function(cur) {
+            var subscribeToList = subscribeTo.$__subscribeToList;
+            subscribeTo.$__subscribeToList = subscribeToList.filter(function(cur) {
                 return cur !== self;
             });
         }
     },
 
     on: function(event, listener) {
-        this._.on(event, listener);
-        this.a.push([event, listener]);
+        this.$__target.on(event, listener);
+        this.$__listeners.push([event, listener]);
         return this;
     },
 
@@ -75,15 +75,15 @@ EventEmitterWrapper.prototype = {
         // do our own cleanup if the `once` event is emitted. Therefore, we need
         // to wrap the user's listener function with our own listener function.
         var wrappedListener = function() {
-            self.c(function(event, listenerFunc) {
+            self.$__remove(function(event, listenerFunc) {
                 return wrappedListener === listenerFunc;
             }, true /* We are removing the wrapped listener */);
 
             listener.apply(this, arguments);
         };
 
-        this._.once(event, wrappedListener);
-        this.a.push([event, listener, wrappedListener]);
+        this.$__target.once(event, wrappedListener);
+        this.$__listeners.push([event, listener, wrappedListener]);
         return this;
     },
 
@@ -94,11 +94,11 @@ EventEmitterWrapper.prototype = {
         }
 
         if (listener && event) {
-            this.c(function(curEvent, curListener) {
+            this.$__remove(function(curEvent, curListener) {
                 return event === curEvent && listener === curListener;
             });
         } else if (listener) {
-            this.c(function(curEvent, curListener) {
+            this.$__remove(function(curEvent, curListener) {
                 return listener === curListener;
             });
         } else if (event) {
@@ -110,11 +110,11 @@ EventEmitterWrapper.prototype = {
 
     removeAllListeners: function(event) {
 
-        var listeners = this.a;
-        var target = this._;
+        var listeners = this.$__listeners;
+        var target = this.$__target;
 
         if (event) {
-            this.c(function(curEvent, curListener) {
+            this.$__remove(function(curEvent, curListener) {
                 return event === curEvent;
             });
         } else {
@@ -122,7 +122,7 @@ EventEmitterWrapper.prototype = {
                 var cur = listeners[i];
                 target.removeListener(cur[INDEX_EVENT], cur[INDEX_USER_LISTENER]);
             }
-            this.a.length = 0;
+            this.$__listeners.length = 0;
         }
 
         return this;
@@ -130,12 +130,12 @@ EventEmitterWrapper.prototype = {
 };
 
 function EventEmitterAdapter(target) {
-    this._ = target;
+    this.$__target = target;
 }
 
 EventEmitterAdapter.prototype = {
     on: function(event, listener) {
-        this._.addEventListener(event, listener);
+        this.$__target.addEventListener(event, listener);
         return this;
     },
 
@@ -144,21 +144,21 @@ EventEmitterAdapter.prototype = {
 
         // need to save this so we can remove it below
         var onceListener = function() {
-          self._.removeEventListener(event, onceListener);
+          self.$__target.removeEventListener(event, onceListener);
           listener();
         };
-        this._.addEventListener(event, onceListener);
+        this.$__target.addEventListener(event, onceListener);
         return this;
     },
 
     removeListener: function(event, listener) {
-        this._.removeEventListener(event, listener);
+        this.$__target.removeEventListener(event, listener);
         return this;
     }
 };
 
 function SubscriptionTracker() {
-    this.d = [];
+    this.$__subscribeToList = [];
 }
 
 SubscriptionTracker.prototype = {
@@ -167,11 +167,11 @@ SubscriptionTracker.prototype = {
         var addDestroyListener = !options || options.addDestroyListener !== false;
         var wrapper;
         var nonEE;
-        var subscribeToList = this.d;
+        var subscribeToList = this.$__subscribeToList;
 
         for (var i=0, len=subscribeToList.length; i<len; i++) {
             var cur = subscribeToList[i];
-            if (cur._ === target) {
+            if (cur.$__target === target) {
                 wrapper = cur;
                 break;
             }
@@ -188,7 +188,7 @@ SubscriptionTracker.prototype = {
                     wrapper.removeAllListeners();
 
                     for (var i = subscribeToList.length - 1; i >= 0; i--) {
-                        if (subscribeToList[i]._ === target) {
+                        if (subscribeToList[i].$__target === target) {
                             subscribeToList.splice(i, 1);
                             break;
                         }
@@ -198,7 +198,7 @@ SubscriptionTracker.prototype = {
 
             // Store a reference to the parent SubscriptionTracker so that we can do cleanup
             // if the EventEmitterWrapper instance becomes empty (i.e., no active listeners)
-            wrapper.b = this;
+            wrapper.$__subscribeTo = this;
             subscribeToList.push(wrapper);
         }
 
@@ -206,16 +206,16 @@ SubscriptionTracker.prototype = {
     },
 
     removeAllListeners: function(target, event) {
-        var subscribeToList = this.d;
+        var subscribeToList = this.$__subscribeToList;
         var i;
 
         if (target) {
             for (i = subscribeToList.length - 1; i >= 0; i--) {
                 var cur = subscribeToList[i];
-                if (cur._ === target) {
+                if (cur.$__target === target) {
                     cur.removeAllListeners(event);
 
-                    if (!cur.a.length) {
+                    if (!cur.$__listeners.length) {
                         // Do some cleanup if we removed all
                         // listeners for the target event emitter
                         subscribeToList.splice(i, 1);
@@ -247,7 +247,7 @@ exports.wrap = function(targetEventEmitter) {
     if (!nonEE) {
       // we don't set this for non EE types
       targetEventEmitter.once(DESTROY, function() {
-          wrapper.a.length = 0;
+          wrapper.$__listeners.length = 0;
       });
     }
 

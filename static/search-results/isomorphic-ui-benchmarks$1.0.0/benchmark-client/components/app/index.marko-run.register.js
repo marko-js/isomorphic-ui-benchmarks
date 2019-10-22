@@ -1,0 +1,1 @@
+$_mod.run("/isomorphic-ui-benchmarks$1.0.0/benchmark-client/components/app/index.marko.register");
