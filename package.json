@@ -45,7 +45,7 @@
     "inferno-server": "^7.3.2",
     "lasso": "^3.3.1",
     "lasso-marko": "^2.4.8",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "marko": "^4.18.16",
     "mkdirp": "^0.5.1",
     "preact": "^10.0.1",
